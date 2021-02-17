@@ -11,7 +11,7 @@ The first phase of development will allow a single customer to place, view and u
 The subsystem must be able to:
 
 - Allow a customer to place an advert on the site.
-- Adverts will belong to a particular category. Allowable categories are: Books, Clothes, Hardware, Cars, Electronics + a few more?
+- Adverts will belong to a particular category. Allowable categories are: Property, Jobs and Cars.
 - An advert will display category, description, price and customer contact details.
 - Allow customers to view all of their own adverts.
 - Allow customers to view their adverts by category.
