@@ -16,14 +16,14 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-    // GET ALL
+    // GET (retrieve) ALL
     @GetMapping(value="/customers")
     public ResponseEntity<List<Customer>> getAllCustomers () {
         List<Customer> allCustomers = customerRepository.findAll();
         return new ResponseEntity<>(allCustomers, HttpStatus.OK);
     }
 
-    // GET (one) by ID
+    // GET (retrieve one) by ID
     @GetMapping(value = "/customers/{id}")
     public ResponseEntity<Optional<Customer>> getCustomer(@PathVariable Long id) {
         return new ResponseEntity<>(customerRepository.findById(id), HttpStatus.OK);
@@ -34,6 +34,23 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
+    }
+
+    // Patch (update) Customer - note the use of the id as parameter input in url,
+    // but no use of it (directly) in the parameters list of the function - the
+    // function uses the customer object that is sent in the request body. The id
+    // is sent via a pathvariable, and must be handled in the background by Spring etc.
+    @PatchMapping(value = "/customers/{id}")
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+        customerRepository.save(customer); // update customer details
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/customers/{id}")
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable Long id) {
+        Customer found = customerRepository.getOne(id);
+        customerRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
 }
