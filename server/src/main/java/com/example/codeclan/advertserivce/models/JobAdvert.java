@@ -4,8 +4,10 @@ import com.example.codeclan.advertserivce.helpers.JobType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="jobs_adverts")
 public class JobAdvert extends Advert {
 
     @Column
