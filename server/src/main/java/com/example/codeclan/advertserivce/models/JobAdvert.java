@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="jobs_adverts")
+@Table(name="job_adverts")
 public class JobAdvert extends Advert {
 
     @Column
