@@ -33,7 +33,7 @@ public class AdvertController {
     PropertyAdvertRepository propertyAdvertRepository;
 
 
-    @GetMapping(value = "/adverts")
+    @GetMapping(value="/adverts")
     public ResponseEntity<List<Advert>> getAllAdverts (
             @RequestParam(name="search", required = false) String searchString,
             @RequestParam(name = "category", required = false) String category
@@ -47,7 +47,7 @@ public class AdvertController {
 
             switch (category) {
                 case "CARS":
-                    List<CarAdvert> carCategoryAdverts = carAdvertRepository.findByTitleContaining(searchString);
+                    List<CarAdvert> carCategoryAdverts = carAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the CarAdvert list to Advert list - wouldn't let me cast for some reason!
                     allCategoryAdverts = Stream.of(carCategoryAdverts)
                             .flatMap(x -> x.stream())
@@ -56,7 +56,7 @@ public class AdvertController {
 
 
                 case "JOBS":
-                    List<JobAdvert> jobCategoryAdverts = jobAdvertRepository.findByTitleContaining(searchString);
+                    List<JobAdvert> jobCategoryAdverts = jobAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the JobAdvert list to Advert list - wouldn't let me cast for some reason!
                     allCategoryAdverts = Stream.of(jobCategoryAdverts)
                             .flatMap(x -> x.stream())
@@ -64,7 +64,7 @@ public class AdvertController {
                     break;
 
                 case "PROPERTIES":
-                    List<PropertyAdvert> propertyCategoryAdverts = propertyAdvertRepository.findByTitleContaining(searchString);
+                    List<PropertyAdvert> propertyCategoryAdverts = propertyAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the JobAdvert list to Advert list - wouldn't let me cast for some reason!
                     allCategoryAdverts = Stream.of(propertyCategoryAdverts)
                             .flatMap(x -> x.stream())
@@ -83,9 +83,9 @@ public class AdvertController {
 
             // Use only search string as entered by the user.
 
-            List<CarAdvert> searchedCarAdverts = carAdvertRepository.findByTitleContaining(searchString);
-            List<JobAdvert> searchedJobAdverts = jobAdvertRepository.findByTitleContaining(searchString);
-            List<PropertyAdvert> searchedPropertyAdverts = propertyAdvertRepository.findByTitleContaining(searchString);
+            List<CarAdvert> searchedCarAdverts = carAdvertRepository.findByTitleContainingIgnoreCase(searchString);
+            List<JobAdvert> searchedJobAdverts = jobAdvertRepository.findByTitleContainingIgnoreCase(searchString);
+            List<PropertyAdvert> searchedPropertyAdverts = propertyAdvertRepository.findByTitleContainingIgnoreCase(searchString);
 
             // Merge the three lists together, and return...
             List<Advert> allSearchedAdverts = Stream.of(searchedCarAdverts, searchedJobAdverts, searchedPropertyAdverts)

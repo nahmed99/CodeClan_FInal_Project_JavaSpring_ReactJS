@@ -10,6 +10,6 @@ import java.util.List;
 // NOTE: As this is a subclass, it will extend the parent repository:
 public interface JobAdvertRepository extends AdvertRepository {
 
-    List<JobAdvert> findByTitleContaining(String searchString);
+    List<JobAdvert> findByTitleContainingIgnoreCase(String searchString);
 //    Iterable<Advert> findByTitleContaining(String searchString);
 }
