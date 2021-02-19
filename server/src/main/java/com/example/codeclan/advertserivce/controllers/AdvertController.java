@@ -43,39 +43,39 @@ public class AdvertController {
 
             // Use search string AND category, as entered by the user.
 
-            List<Advert> allCategoryAdverts;
+            List<Advert> allSearchCategoryAdverts;
 
             switch (category.toUpperCase()) {
                 case "CARS":
-                    List<CarAdvert> carCategoryAdverts = carAdvertRepository.findByTitleContainingIgnoreCase(searchString);
+                    List<CarAdvert> carSearchCategoryAdverts = carAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the CarAdvert list to Advert list - wouldn't let me cast for some reason!
-                    allCategoryAdverts = Stream.of(carCategoryAdverts)
+                    allSearchCategoryAdverts = Stream.of(carSearchCategoryAdverts)
                             .flatMap(x -> x.stream())
                             .collect(Collectors.toList());
                     break;
 
 
                 case "JOBS":
-                    List<JobAdvert> jobCategoryAdverts = jobAdvertRepository.findByTitleContainingIgnoreCase(searchString);
+                    List<JobAdvert> jobSearchCategoryAdverts = jobAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the JobAdvert list to Advert list - wouldn't let me cast for some reason!
-                    allCategoryAdverts = Stream.of(jobCategoryAdverts)
+                    allSearchCategoryAdverts = Stream.of(jobSearchCategoryAdverts)
                             .flatMap(x -> x.stream())
                             .collect(Collectors.toList());
                     break;
 
                 case "PROPERTIES":
-                    List<PropertyAdvert> propertyCategoryAdverts = propertyAdvertRepository.findByTitleContainingIgnoreCase(searchString);
+                    List<PropertyAdvert> propertySearchCategoryAdverts = propertyAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the JobAdvert list to Advert list - wouldn't let me cast for some reason!
-                    allCategoryAdverts = Stream.of(propertyCategoryAdverts)
+                    allSearchCategoryAdverts = Stream.of(propertySearchCategoryAdverts)
                             .flatMap(x -> x.stream())
                             .collect(Collectors.toList());
                     break;
 
                 default:
-                    allCategoryAdverts = new ArrayList<>(); // return an empty list
+                    allSearchCategoryAdverts = new ArrayList<>(); // return an empty list
             }
 
-            return new ResponseEntity<>(allCategoryAdverts, HttpStatus.OK);
+            return new ResponseEntity<>(allSearchCategoryAdverts, HttpStatus.OK);
         }
 
 
@@ -96,41 +96,49 @@ public class AdvertController {
         }
 
 
-//        if (category != null) {
-//
-//            // Use only category as entered by the user.
-//
-//            List<Advert> allCategoryAdverts;
-//
-//            switch (category.toUpperCase()) {
-//                case "CARS":
-//                    allCategoryAdverts = (List<Advert>) carAdvertRepository.findAll();
-//                    break;
-//
-//                case "JOBS":
-//                    allCategoryAdverts = (List<Advert>) jobAdvertRepository.findAll();
-//                    break;
-//
-//                case "PROPERTIES":
-//                    allCategoryAdverts = (List<Advert>) propertyAdvertRepository.findAll();
-//                    break;
-//
-//                default:
-//                    allCategoryAdverts = new ArrayList<>(); // return an empty list
-//            }
-//
-//            return new ResponseEntity<>(allCategoryAdverts, HttpStatus.OK);
-//        }
+        if (category != null) {
+
+            // Use only category as entered by the user.
+
+            List<Advert> allCategoryAdverts;
+
+            switch (category.toUpperCase()) {
+                case "CARS":
+                    List<CarAdvert> carCategoryAdverts = carAdvertRepository.findAll();
+                    allCategoryAdverts = Stream.of(carCategoryAdverts)
+                            .flatMap(x -> x.stream())
+                            .collect(Collectors.toList());
+                    break;
+
+                case "JOBS":
+                    List<JobAdvert> jobCategoryAdverts = jobAdvertRepository.findAll();
+                    allCategoryAdverts = Stream.of(jobCategoryAdverts)
+                            .flatMap(x -> x.stream())
+                            .collect(Collectors.toList());
+                    break;
+
+                case "PROPERTIES":
+                    List<PropertyAdvert> propertyCategoryAdverts = propertyAdvertRepository.findAll();
+                    allCategoryAdverts = Stream.of(propertyCategoryAdverts)
+                            .flatMap(x -> x.stream())
+                            .collect(Collectors.toList());
+                    break;
+
+                default:
+                    allCategoryAdverts = new ArrayList<>(); // return an empty list
+            }
+
+            return new ResponseEntity<>(allCategoryAdverts, HttpStatus.OK);
+        }
 
 
         // GET ALL Adverts - this is the default data return
         List<CarAdvert> allCarAdverts = carAdvertRepository.findAll();
-//        List<Advert> allJobAdverts = jobAdvertRepository.findAll();
-//        List<Advert> allPropertyAdverts = propertyAdvertRepository.findAll();
+        List<JobAdvert> allJobAdverts = jobAdvertRepository.findAll();
+        List<PropertyAdvert> allPropertyAdverts = propertyAdvertRepository.findAll();
 
         // Merge the three lists together, and return...
-//        List<Advert> allAdverts = Stream.of(allCarAdverts, allJobAdverts, allPropertyAdverts)
-        List<Advert> allAdverts = Stream.of(allCarAdverts)
+        List<Advert> allAdverts = Stream.of(allCarAdverts, allJobAdverts, allPropertyAdverts)
                 .flatMap(x -> x.stream())
                 .collect(Collectors.toList());
 
