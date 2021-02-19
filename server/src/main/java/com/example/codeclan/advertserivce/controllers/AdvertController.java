@@ -45,7 +45,7 @@ public class AdvertController {
 
             List<Advert> allCategoryAdverts;
 
-            switch (category) {
+            switch (category.toUpperCase()) {
                 case "CARS":
                     List<CarAdvert> carCategoryAdverts = carAdvertRepository.findByTitleContainingIgnoreCase(searchString);
                     // Convert the CarAdvert list to Advert list - wouldn't let me cast for some reason!
@@ -96,43 +96,47 @@ public class AdvertController {
         }
 
 
-        if (category != null) {
-
-            // Use only category as entered by the user.
-
-            List<Advert> allCategoryAdverts;
-
-            switch (category) {
-                case "CARS":
-                    allCategoryAdverts = (List<Advert>) carAdvertRepository.findAll();
-                    break;
-
-                case "JOBS":
-                    allCategoryAdverts = (List<Advert>) jobAdvertRepository.findAll();
-                    break;
-
-                case "PROPERTIES":
-                    allCategoryAdverts = (List<Advert>) propertyAdvertRepository.findAll();
-                    break;
-
-                default:
-                    allCategoryAdverts = new ArrayList<>(); // return an empty list
-            }
-
-            return new ResponseEntity<>(allCategoryAdverts, HttpStatus.OK);
-        }
+//        if (category != null) {
+//
+//            // Use only category as entered by the user.
+//
+//            List<Advert> allCategoryAdverts;
+//
+//            switch (category.toUpperCase()) {
+//                case "CARS":
+//                    allCategoryAdverts = (List<Advert>) carAdvertRepository.findAll();
+//                    break;
+//
+//                case "JOBS":
+//                    allCategoryAdverts = (List<Advert>) jobAdvertRepository.findAll();
+//                    break;
+//
+//                case "PROPERTIES":
+//                    allCategoryAdverts = (List<Advert>) propertyAdvertRepository.findAll();
+//                    break;
+//
+//                default:
+//                    allCategoryAdverts = new ArrayList<>(); // return an empty list
+//            }
+//
+//            return new ResponseEntity<>(allCategoryAdverts, HttpStatus.OK);
+//        }
 
 
         // GET ALL Adverts - this is the default data return
-        List<Advert> allCarAdverts = (List<Advert>) carAdvertRepository.findAll();
-        List<Advert>  allJobAdverts = (List<Advert>) jobAdvertRepository.findAll();
-        List<Advert> allPropertyAdverts = (List<Advert>) propertyAdvertRepository.findAll();
+        List<CarAdvert> allCarAdverts = carAdvertRepository.findAll();
+//        List<Advert> allJobAdverts = jobAdvertRepository.findAll();
+//        List<Advert> allPropertyAdverts = propertyAdvertRepository.findAll();
 
         // Merge the three lists together, and return...
-        List<Advert> allAdverts = Stream.of(allCarAdverts, allJobAdverts, allPropertyAdverts)
+//        List<Advert> allAdverts = Stream.of(allCarAdverts, allJobAdverts, allPropertyAdverts)
+        List<Advert> allAdverts = Stream.of(allCarAdverts)
                 .flatMap(x -> x.stream())
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(allAdverts, HttpStatus.OK);
     }
+
+
+
 }
