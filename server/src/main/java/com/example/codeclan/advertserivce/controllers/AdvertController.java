@@ -145,6 +145,4 @@ public class AdvertController {
         return new ResponseEntity<>(allAdverts, HttpStatus.OK);
     }
 
-
-
 }
