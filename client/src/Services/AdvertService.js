@@ -1,5 +1,10 @@
 const baseURL = 'http://localhost:8080/adverts/';
 
+// This link was not working, but the others were. Eventually found
+// that ABP (AdBlock Plus) was blocking it...due to the word 
+// "adverts" in the URL? Kept getting "net::ERR_BLOCKED_BY_CLIENT",
+// until I disabled ABP...
+
 
 // Retrieve ALL records, or a selection based on search criteria
 export const getAllAdverts = (searchString, category) => {
@@ -20,6 +25,7 @@ export const getAllAdverts = (searchString, category) => {
     }
 
     // If none of the above conditions are true, then just the base URL will be used...
+    console.log(newBaseURL);
 
     return fetch(newBaseURL)
     .then(res => res.json())
