@@ -1,5 +1,6 @@
 package com.example.codeclan.advertserivce.models;
 
+import com.example.codeclan.advertserivce.helpers.CategoryType;
 import com.example.codeclan.advertserivce.helpers.JobType;
 
 import javax.persistence.Column;
@@ -23,12 +24,12 @@ public class JobAdvert extends Advert {
     public JobAdvert() {
     }
 
-    public JobAdvert(String title, String description,
+    public JobAdvert(CategoryType category, String title, String description,
                      double cost, Customer customer,
                      String industry, JobType jobType,
                      double salary) {
 
-        super(title, description, cost, customer);
+        super(category, title, description, cost, customer);
         this.industry = industry;
         this.jobType = jobType;
         this.salary = salary;

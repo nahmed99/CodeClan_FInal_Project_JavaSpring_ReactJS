@@ -1,6 +1,6 @@
 package com.example.codeclan.advertserivce.helpers
 
-enum class TransMissionType {
+enum class TransmissionType {
 
     MANUAL,
     AUTOMATIC

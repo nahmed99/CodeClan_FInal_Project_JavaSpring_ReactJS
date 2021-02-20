@@ -1,6 +1,7 @@
 package com.example.codeclan.advertserivce.models;
 
-import com.example.codeclan.advertserivce.helpers.TransMissionType;
+import com.example.codeclan.advertserivce.helpers.CategoryType;
+import com.example.codeclan.advertserivce.helpers.TransmissionType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class CarAdvert extends Advert {
     private int regYear;
 
     @Column
-    private TransMissionType transmission;
+    private TransmissionType transmission;
 
     @Column
     private int numSeats;
@@ -43,13 +44,13 @@ public class CarAdvert extends Advert {
     }
 
 
-    public CarAdvert(String title, String description, double cost,
+    public CarAdvert(CategoryType category, String title, String description, double cost,
                      Customer customer, String make, String model,
-                     int regYear, TransMissionType transmission, int numSeats,
+                     int regYear, TransmissionType transmission, int numSeats,
                      int numDoors, String colour, double price,
                      String[] imageUrl) {
 
-        super(title, description, cost, customer);
+        super(category, title, description, cost, customer);
 
         this.make = make;
         this.model = model;
@@ -87,11 +88,11 @@ public class CarAdvert extends Advert {
         this.regYear = regYear;
     }
 
-    public TransMissionType getTransmission() {
+    public TransmissionType getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(TransMissionType transmission) {
+    public void setTransmission(TransmissionType transmission) {
         this.transmission = transmission;
     }
 

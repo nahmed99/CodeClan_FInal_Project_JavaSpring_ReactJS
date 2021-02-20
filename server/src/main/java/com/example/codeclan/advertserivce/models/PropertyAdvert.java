@@ -1,5 +1,7 @@
 package com.example.codeclan.advertserivce.models;
 
+import com.example.codeclan.advertserivce.helpers.CategoryType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -31,12 +33,12 @@ public class PropertyAdvert extends Advert {
     public PropertyAdvert() {
     }
 
-    public PropertyAdvert(String title, String description, double cost,
+    public PropertyAdvert(CategoryType category, String title, String description, double cost,
                           Customer customer, String type, String address,
                           String postCode, int numRooms, double price,
                           String[] imageUrl) {
 
-        super(title, description, cost, customer);
+        super(category, title, description, cost, customer);
 
         this.type = type;
         this.address = address;

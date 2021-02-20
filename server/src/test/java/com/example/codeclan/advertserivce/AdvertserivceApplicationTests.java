@@ -1,7 +1,8 @@
 package com.example.codeclan.advertserivce;
 
+import com.example.codeclan.advertserivce.helpers.CategoryType;
 import com.example.codeclan.advertserivce.helpers.JobType;
-import com.example.codeclan.advertserivce.helpers.TransMissionType;
+import com.example.codeclan.advertserivce.helpers.TransmissionType;
 import com.example.codeclan.advertserivce.models.CarAdvert;
 import com.example.codeclan.advertserivce.models.Customer;
 import com.example.codeclan.advertserivce.models.JobAdvert;
@@ -49,9 +50,9 @@ class AdvertserivceApplicationTests {
 
 		String[] imgURL = {"http://www.bbc.com"};
 
-		CarAdvert carAdvert = new CarAdvert("Good car for sale",
+		CarAdvert carAdvert = new CarAdvert(CategoryType.CAR, "Good car for sale",
 				"very good runner, low mileage", 25.00, cust,
-				"Fird", "Iscort", 1999, TransMissionType.MANUAL,
+				"Fird", "Iscort", 1999, TransmissionType.MANUAL,
 				5, 5, "Black", 500.00, imgURL);
 
 		carAdvertRepository.save(carAdvert);
@@ -64,7 +65,7 @@ class AdvertserivceApplicationTests {
 
 		String[] imgURL = {"http://www.google.com"};
 
-		PropertyAdvert propertyAdvert = new PropertyAdvert("Bungalow For Sale",
+		PropertyAdvert propertyAdvert = new PropertyAdvert(CategoryType.PROPERTY, "Bungalow For Sale",
 				"Pleasantly located bungalow", 95.00, cust,
 				"Bungalow", "Next to the tree, West High Street", "G22 CHT", 3,
 				345000, imgURL);
@@ -78,7 +79,7 @@ class AdvertserivceApplicationTests {
 		Customer cust = new Customer("Fred", "Musket", "fredsemail@theemailplace.email");
 		customerRepository.save(cust);
 
-		JobAdvert jobAdvert = new JobAdvert("Server Required For Client Services",
+		JobAdvert jobAdvert = new JobAdvert(CategoryType.JOB, "Server Required For Client Services",
 				"Evening and weekend working required", 10.00, cust,
 				"Hospitality", JobType.CONTRACT, 11.75);
 

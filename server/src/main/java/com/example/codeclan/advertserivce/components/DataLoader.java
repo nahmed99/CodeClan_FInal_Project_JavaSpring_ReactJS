@@ -1,7 +1,8 @@
 package com.example.codeclan.advertserivce.components;
 
+import com.example.codeclan.advertserivce.helpers.CategoryType;
 import com.example.codeclan.advertserivce.helpers.JobType;
-import com.example.codeclan.advertserivce.helpers.TransMissionType;
+import com.example.codeclan.advertserivce.helpers.TransmissionType;
 import com.example.codeclan.advertserivce.models.CarAdvert;
 import com.example.codeclan.advertserivce.models.Customer;
 import com.example.codeclan.advertserivce.models.JobAdvert;
@@ -48,21 +49,39 @@ public class DataLoader implements ApplicationRunner {
 
 
         String[] imgURL1 = {"http://www.bbc.com", "http://www.excite.com", "http://www.yahoo.com"};
-        CarAdvert carAdvert = new CarAdvert("Good car for sale",
+        String[] imgURL2 = {"http://www.google.com"};
+        String[] imgURL3 = {"http://www.open.ac.uk", "http://www.highgear.com"};
+
+        CarAdvert carAdvert = new CarAdvert(CategoryType.CAR, "Good car for sale",
                 "very good runner, low mileage", 25.00, cust1,
-                "Fird", "Iscort", 1999, TransMissionType.MANUAL,
+                "Fird", "Iscort", 1999, TransmissionType.MANUAL,
                 5, 5, "Black", 500.00, imgURL1);
         carAdvertRepository.save(carAdvert);
 
 
-        JobAdvert jobAdvert = new JobAdvert("Server Required For Client Services",
+        CarAdvert carAdvert2 = new CarAdvert(CategoryType.CAR, "Car for quick sale",
+                "very good runner, ave mileage", 25.00, cust2,
+                "Jaguar", "XJS", 2013, TransmissionType.AUTOMATIC,
+                5, 4, "Gold", 7950.00, imgURL3);
+        carAdvertRepository.save(carAdvert2);
+
+
+        JobAdvert jobAdvert = new JobAdvert(CategoryType.JOB, "Server Required For Client Services",
                 "Evening and weekend working required", 10.00, cust2,
                 "Hospitality", JobType.CONTRACT, 11.75);
         jobAdvertRepository.save(jobAdvert);
 
+        JobAdvert jobAdvert2 = new JobAdvert(CategoryType.JOB, "Chef",
+                "Evening and weekend working required", 10.00, cust2,
+                "Hospitality", JobType.PERMANENT, 15.00);
+        jobAdvertRepository.save(jobAdvert2);
 
-        String[] imgURL2 = {"http://www.google.com"};
-        PropertyAdvert propertyAdvert = new PropertyAdvert("Bungalow For Sale",
+        JobAdvert jobAdvert3 = new JobAdvert(CategoryType.JOB, "Dish washer",
+                "Evening and weekend working required", 10.00, cust2,
+                "Hospitality", JobType.PERMANENT, 10.00);
+        jobAdvertRepository.save(jobAdvert3);
+
+        PropertyAdvert propertyAdvert = new PropertyAdvert(CategoryType.PROPERTY, "Bungalow For Sale",
                 "Pleasantly located bungalow", 95.00, cust3,
                 "Bungalow", "Next to the tree, West High Street", "G22 CHT", 3,
                 345000, imgURL2);
@@ -73,34 +92,3 @@ public class DataLoader implements ApplicationRunner {
     }
 
 }
-
-
-/*
-
-@Test
-	public void canCreateAndSaveCarAdvert() {
-		Customer cust = new Customer("Fred", "Musket", "fredsemail@theemailplace.email");
-		customerRepository.save(cust);
-
-
-	}
-
-	@Test
-	public void canCreateAndSavePropertyAdvert() {
-		Customer cust = new Customer("Fred", "Musket", "fredsemail@theemailplace.email");
-		customerRepository.save(cust);
-
-
-	}
-
-
-	@Test
-	public void canCreateAndSaveJobAdvert() {
-		Customer cust = new Customer("Fred", "Musket", "fredsemail@theemailplace.email");
-		customerRepository.save(cust);
-
-
-	}
-
-
- */

@@ -1,5 +1,6 @@
 package com.example.codeclan.advertserivce.models;
 
+import com.example.codeclan.advertserivce.helpers.CategoryType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -11,6 +12,9 @@ public abstract class Advert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
+    private CategoryType category;
 
     @Column
     private String title;
@@ -33,7 +37,8 @@ public abstract class Advert {
     }
 
 
-    public Advert(String title, String description, double cost, Customer customer) {
+    public Advert(CategoryType category, String title, String description, double cost, Customer customer) {
+        this.category = category;
         this.title = title;
         this.description = description;
         this.cost = cost;
@@ -46,6 +51,14 @@ public abstract class Advert {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public CategoryType getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryType category) {
+        this.category = category;
     }
 
     public String getTitle() {
