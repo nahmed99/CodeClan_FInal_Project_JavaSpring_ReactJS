@@ -6,8 +6,6 @@ export const getAllPropertyAdverts = (searchString) => {
 
     let newBaseURL = baseURL;
 
-    
-    // if (searchString.length > 0 && category.length > 0) {
     if (searchString.length) {
         // Check if only searchString entered by user
         newBaseURL = newBaseURL + "?search=" + searchString;
