@@ -24,7 +24,7 @@ export const addCustomer = (customer) => {
 
 // Update record
 export const updateCustomer = (customer) => {
-    return fetch(baseURL + customer.id, {    // Do we need to send an id to Spring???
+    return fetch(baseURL + customer.id, {   
         method: "PATCH",
         body: JSON.stringify(customer),
         headers: {'Content-Type': 'application/json'}

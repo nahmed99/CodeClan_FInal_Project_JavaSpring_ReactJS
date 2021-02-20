@@ -1,8 +1,8 @@
-const baseURL = 'http://localhost:8080/cars/';
+const baseURL = 'http://localhost:8080/properties/';
 
 
 // Retrieve ALL records, or just a selection of them based on search criteria
-export const getAllCarAdverts = (searchString) => {
+export const getAllPropertyAdverts = (searchString) => {
 
     let newBaseURL = baseURL;
 
@@ -14,40 +14,39 @@ export const getAllCarAdverts = (searchString) => {
     }
 
     // If above conditions are not true, then just the base URL will be used...
-
     return fetch(newBaseURL)
     .then(res => res.json())
 }
 
 
 // Retrieve ONE record
-export const getCarAdvert = (id) => {
+export const getPropertyAdvert = (id) => {
     return fetch(baseURL + id)
     .then(res => res.json())
 }
 
 // Create record
-export const addCarAdverts = (carAdvert) => {
+export const addPropertyAdverts = (propertyAdvert) => {
     return fetch(baseURL, {
         method: 'POST',
-        body: JSON.stringify(carAdvert),
+        body: JSON.stringify(propertyAdvert),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
 }
 
 // Update record
-export const updateCarAdvert = (carAdvert) => {
-    return fetch(baseURL + carAdvert.id, {    
+export const updatePropertyAdvert = (propertyAdvert) => {
+    return fetch(baseURL + propertyAdvert.id, {   
         method: "PATCH",
-        body: JSON.stringify(carAdvert),
+        body: JSON.stringify(propertyAdvert),
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json());
 }
 
 // Delete record
-export const deleteCarAdvert = (id) => {
+export const deletePropertyAdvert = (id) => {
     return fetch(baseURL + id, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
