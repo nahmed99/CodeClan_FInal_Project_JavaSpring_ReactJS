@@ -1,9 +1,9 @@
 
-const CarAdvert = ( {category, description} ) => {
+const CarAdvert = ( {advert} ) => {
 
 
     return (
-            <p>{category} and {description } </p>
+            <p>{advert.id} and {advert.category} and {advert.description } </p>
     )
 }
 

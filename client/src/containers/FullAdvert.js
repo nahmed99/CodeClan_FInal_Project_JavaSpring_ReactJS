@@ -12,7 +12,7 @@ const FullAdvert = ({ id, category }) => {
 
     // Return nothing, if none of the above worked!
     return (
-        <CarAdvert 
+        <PropertyAdvert 
             category = {id}
             description = {category}
         />

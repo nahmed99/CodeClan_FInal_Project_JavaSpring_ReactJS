@@ -1,10 +1,10 @@
 
-const PropertyAdvert = ( {propertyAdvert} ) => {
+const PropertyAdvert = ( {advert} ) => {
 
 
     return (
         <>
-            <p>{ propertyAdvert.category} and {propertyAdvert.description } </p>
+            <p>{ advert.category} also {advert.description } </p>
         </>
     )
 }

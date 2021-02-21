@@ -1,11 +1,9 @@
 
-const JobAdvert = ( {jobAdvert} ) => {
+const JobAdvert = ( {advert} ) => {
 
 
     return (
-        <>
-            <p>{ jobAdvert.category} and {jobAdvert.description } </p>
-        </>
+            <p>{advert.id} and {advert.category} and {advert.description } </p>
     )
 }
 
