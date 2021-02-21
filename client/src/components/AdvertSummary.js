@@ -1,4 +1,13 @@
-const AdvertSummary = ({ id, category, title, moneyTitle, moneyTotal, onAdvertSelected }) => {
+const AdvertSummary = ({ id, category, title, moneyTotal, onAdvertSelected }) => {
+
+    // Determine whether to use price (car or property) or salary (job)
+    let moneyTitle;
+    if (category === "JOB") {
+        moneyTitle = "Salary";
+    } else {
+        moneyTitle = "Price";
+    }
+
 
     const handleClick = () => {
         onAdvertSelected(id, category)

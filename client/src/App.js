@@ -4,15 +4,18 @@ import { getAllAdverts } from './services/AdvertService';
 import AdvertList from './containers/AdvertList';
 import FullAdvert from './containers/FullAdvert';
 import { ScrollView } from "@cantonjs/react-scroll-view";
+import {getCarAdvert} from './services/CarService';
+import {getJobAdvert} from './services/JobService';
+import {getPropertyAdvert} from './services/PropertyService';
 
 function App() {
 
   const [adverts, setAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");
   const [category, setCategory] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedId, setSelectedId] = useState(0);
-
+  // const [selectedCategory, setSelectedCategory] = useState("");
+  // const [selectedId, setSelectedId] = useState(0);
+  const [oneAdvert, setOneAdvert] = useState([]);
 
   useEffect(() => {
     getAllAdverts(searchString, category)
@@ -44,10 +47,34 @@ function App() {
     // that will achieve our aim..? But what will happen if two
     // adverts with same id are clicked in succession? Will we
     // need to re-instate the category useState too?
-    setSelectedId(id); 
-    setSelectedCategory(category);
-    console.log(id + " " + category);
+    // setSelectedId(id); 
+    // setSelectedCategory(category);
 
+    if (category === "CAR") {
+      getCarAdvert(id)
+      .then((advert) => {
+        console.log(advert);
+        setOneAdvert(advert);
+      });
+    }
+
+    if (category === "JOB") {
+      getJobAdvert(id)
+      .then((advert) => {
+        console.log(advert);
+        setOneAdvert(advert);
+      });
+    }
+
+    if (category === "PROPERTY") {
+      getPropertyAdvert(id)
+      .then((advert) => {
+        console.log(advert);
+        setOneAdvert(advert);
+      });
+    }
+
+    console.log(oneAdvert.id + " ONE ADVERT " + oneAdvert.category);
   }
 
 
@@ -63,7 +90,7 @@ function App() {
         </section>
         <section className="full-advert-section">
           <ScrollView className="scrollview-data">
-            <FullAdvert className="full-advert" id={selectedId} category={selectedCategory}/>
+            <FullAdvert className="full-advert" id={oneAdvert.id} category={oneAdvert.category}/>
           </ScrollView>
         </section>
         <footer  className="footer-section">

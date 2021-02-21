@@ -6,49 +6,16 @@ import JobAdvert from '../components/JobAdvert';
 import PropertyAdvert from '../components/PropertyAdvert';
 
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const FullAdvert = ({ id, category }) => {
 
-    useEffect(() => {
-        if (category === "CAR") {
-            getCarAdvert(id)
-            .then((carAdvert) => {
-
-                return (
-                    <CarAdvert 
-                        carAdvert = {carAdvert}
-                    />
-                )
-            });
-        } else if (category === "JOB") {
-            getJobAdvert(id)
-            .then((jobAdvert) => {
-
-                return (
-                    <JobAdvert 
-                        jobAdvert = {jobAdvert}
-                    />
-                )
-            });
-        } if (category === "PROPERTY") {
-            getPropertyAdvert(id)
-            .then((propertyAdvert) => {
-
-                return (
-                    <PropertyAdvert 
-                        propertyAdvert = {propertyAdvert}
-                    />
-                )
-            });
-        }
-    });
-    
-
+    // Return nothing, if none of the above worked!
     return (
-        <>
-
-        </>
+        <CarAdvert 
+            category = {id}
+            description = {category}
+        />
     )
 }
 
