@@ -33,7 +33,7 @@ public class AdvertController {
     PropertyAdvertRepository propertyAdvertRepository;
 
 
-    @GetMapping(value="/adverts")
+    @GetMapping(value="/all")
     public ResponseEntity<List<Advert>> getAllAdverts (
             @RequestParam(name="search", required = false) String searchString,
             @RequestParam(name = "category", required = false) String category

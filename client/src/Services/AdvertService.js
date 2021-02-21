@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8080/adverts/';
+const baseURL = 'http://localhost:8080/all/';
 
 // This link was not working, but the others were. Eventually found
 // that ABP (AdBlock Plus) was blocking it...due to the word 
