@@ -25,7 +25,6 @@ export const getAllAdverts = (searchString, category) => {
     }
 
     // If none of the above conditions are true, then just the base URL will be used...
-    console.log(newBaseURL);
 
     return fetch(newBaseURL)
     .then(res => res.json())
