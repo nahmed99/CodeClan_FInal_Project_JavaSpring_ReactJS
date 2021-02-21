@@ -1,11 +1,11 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { getAllAdverts } from './Services/AdvertService';
-import { getAllCustomers } from './Services/CustomerService';
+import { getAllAdverts } from './services/AdvertService';
+import FullList from './containers/FullList';
+import { ScrollView } from "@cantonjs/react-scroll-view";
 
 function App() {
 
-  const [customers, setCustomers] = useState([]);
   const [adverts, setAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");
   const [category, setCategory] = useState("");
@@ -19,13 +19,6 @@ function App() {
   }, []);
 
 
-  useEffect(() => {
-    getAllCustomers()
-    .then((customers) => {
-      setCustomers(customers);
-      console.log(customers);
-    })
-  }, []);
 
 
   // const onHandleUpdate = () => {
@@ -40,14 +33,18 @@ function App() {
   // }
 
 
+  const onAdvertSelected = (id, category) => {
+    console.log(id + " " + category);
+  }
 
 
   return (
-    <div className="App">
-      {/* <p onClick={onHandleUpdate}> Click to update first customer </p>
-      <p onClick={onHandleDelete}> Click to delete first customer </p> */}
-      <p>This is the home page</p>
-    </div>
+    // <div className="App">
+      <>
+        <ScrollView className="scrollview-data">
+          <FullList className="full-advert-list" adverts={adverts} onAdvertSelected={onAdvertSelected}/>
+        </ScrollView>
+      </>
   );
 }
 
