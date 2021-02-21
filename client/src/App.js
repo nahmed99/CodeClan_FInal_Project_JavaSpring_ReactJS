@@ -10,6 +10,7 @@ import {getPropertyAdvert} from './services/PropertyService';
 
 function App() {
 
+  const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");
   const [category, setCategory] = useState("");
@@ -74,12 +75,11 @@ function App() {
       });
     }
 
-    console.log(oneAdvert.id + " ONE ADVERT " + oneAdvert.category);
+    setTrigger(true);
   }
 
 
   return (
-    // <div className="App">
       <>
         <header className="header-section"> 
         </header>
@@ -89,9 +89,9 @@ function App() {
           </ScrollView>
         </section>
         <section className="full-advert-section">
-          <ScrollView className="scrollview-data">
-            <FullAdvert className="full-advert" advert={oneAdvert}/>
-          </ScrollView>
+          {/* <ScrollView className="scrollview-data"> */}
+            <FullAdvert className="full-advert" advert={oneAdvert} trigger={trigger} setTrigger={setTrigger}/>
+          {/* </ScrollView> */}
         </section>
         <footer  className="footer-section">
         </footer>
