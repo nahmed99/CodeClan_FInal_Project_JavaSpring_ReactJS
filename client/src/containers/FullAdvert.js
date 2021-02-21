@@ -1,21 +1,30 @@
-import { getCarAdvert } from '../services/CarService';
-import { getJobAdvert } from '../services/JobService';
-import { getPropertyAdvert } from '../services/PropertyService';
 import CarAdvert from '../components/CarAdvert';
 import JobAdvert from '../components/JobAdvert';
 import PropertyAdvert from '../components/PropertyAdvert';
 
 
-import { useEffect, useState } from "react";
+const FullAdvert = ({ advert }) => {
 
-const FullAdvert = ({ id, category }) => {
-
-    // Return nothing, if none of the above worked!
+    // Only one of the components below will be rendered - as
+    // the advert can only have ONE category at a time.
     return (
-        <PropertyAdvert 
-            category = {id}
-            description = {category}
-        />
+        <>
+            {advert.category === "CAR" &&
+              <CarAdvert 
+                advert = {advert}
+              />
+            }
+            {advert.category === "JOB" &&
+              <JobAdvert 
+                advert = {advert}
+              />
+            }
+            {advert.category === "PROPERTY" &&
+              <PropertyAdvert 
+                advert = {advert}
+              />
+            }
+        </>
     )
 }
 

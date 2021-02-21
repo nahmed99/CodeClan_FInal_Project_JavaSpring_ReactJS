@@ -2,10 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { getAllAdverts } from './services/AdvertService';
 import AdvertList from './containers/AdvertList';
-// import FullAdvert from './containers/FullAdvert';
-import CarAdvert from './components/CarAdvert';
-import JobAdvert from './components/JobAdvert';
-import PropertyAdvert from './components/PropertyAdvert';
+import FullAdvert from './containers/FullAdvert';
 import { ScrollView } from "@cantonjs/react-scroll-view";
 import {getCarAdvert} from './services/CarService';
 import {getJobAdvert} from './services/JobService';
@@ -93,22 +90,7 @@ function App() {
         </section>
         <section className="full-advert-section">
           <ScrollView className="scrollview-data">
-            {/* <FullAdvert className="full-advert" id={oneAdvert.id} category={oneAdvert.category}/> */}
-            {oneAdvert.category === "CAR" &&
-              <CarAdvert 
-                advert = {oneAdvert}
-                // id = {oneAdvert.id}
-                // category = {oneAdvert.category}
-                // description = {oneAdvert.description}
-              />}
-            {oneAdvert.category === "JOB" &&
-              <JobAdvert 
-                advert = {oneAdvert}
-              />}
-            {oneAdvert.category === "PROPERTY" &&
-              <PropertyAdvert 
-                advert = {oneAdvert}
-              />}
+            <FullAdvert className="full-advert" advert={oneAdvert}/>
           </ScrollView>
         </section>
         <footer  className="footer-section">
