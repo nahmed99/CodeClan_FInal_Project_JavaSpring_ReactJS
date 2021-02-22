@@ -7,6 +7,7 @@ import { ScrollView } from "@cantonjs/react-scroll-view";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './containers/Navbar';
 import LoginForm from './containers/LoginForm';
+import UserArea from './containers/UserArea';
 
 
 function App() {
@@ -74,6 +75,10 @@ function App() {
     setTrigger(true);
   }
 
+  const onLoginClicked = (loginStatus) => {
+    setLoggedIn(loginStatus);
+  }
+
 
   return (
       <Router>
@@ -87,6 +92,7 @@ function App() {
 
         <div className='content'>
           <Switch>
+
             <Route exact path="/">
               <section className="list-section">
                 <ScrollView className="scrollview-data">
@@ -101,8 +107,13 @@ function App() {
             </Route>
 
             <Route path="/login">
-              <LoginForm />
+              <LoginForm loggedIn={loggedIn} onLoginClicked={onLoginClicked}/>
             </Route>
+            
+            <Route path="/user">
+              <UserArea />
+            </Route>
+
           </Switch>
         </div>
 
