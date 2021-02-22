@@ -4,12 +4,14 @@ import { getAllAdverts } from './services/AdvertService';
 import AdvertList from './containers/AdvertList';
 import FullAdvert from './containers/FullAdvert';
 import { ScrollView } from "@cantonjs/react-scroll-view";
-import {getCarAdvert} from './services/CarService';
-import {getJobAdvert} from './services/JobService';
-import {getPropertyAdvert} from './services/PropertyService';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Navbar from './containers/Navbar';
+import NavbarLogged from './containers/NavbarLogged';
+
 
 function App() {
 
+  const [loggedIn, setLoggedIn] = useState(false);
   const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");
@@ -74,22 +76,42 @@ function App() {
 
 
   return (
-      <>
+      <Router>
         <header className="header-section"> 
+        {/* Only one naviogation bar will be shown - one when user
+         is NOT logged in, or the other when user IS logged in */}
+          {!loggedIn &&
+            <Navbar />
+          }
+          {loggedIn &&
+            <NavbarLogged />
+          }
+
+
         </header>
-        <section className="list-section">
-          <ScrollView className="scrollview-data">
-            <AdvertList className="advert-list" adverts={adverts} onAdvertSelected={onAdvertSelected}/>
-          </ScrollView>
-        </section>
-        <section className="full-advert-section">
-          {/* <ScrollView className="scrollview-data"> */}
-            <FullAdvert className="full-advert" advert={oneAdvert} trigger={trigger} setTrigger={setTrigger}/>
-          {/* </ScrollView> */}
-        </section>
+
+        <div className='content'>
+          <Switch>
+            <Route path="/">
+              <section className="list-section">
+                <ScrollView className="scrollview-data">
+                  <AdvertList className="advert-list" adverts={adverts} onAdvertSelected={onAdvertSelected}/>
+                </ScrollView>
+              </section>
+
+              <section className="full-advert-section">
+                {/* <ScrollView className="scrollview-data"> */}
+                  <FullAdvert className="full-advert" advert={oneAdvert} trigger={trigger} setTrigger={setTrigger}/>
+                {/* </ScrollView> */}
+              </section>
+              
+            </Route>
+          </Switch>
+        </div>
+
         <footer  className="footer-section">
         </footer>
-      </>
+      </Router>
   );
 }
 
