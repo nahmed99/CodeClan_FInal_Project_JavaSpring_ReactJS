@@ -1,20 +1,22 @@
-const AdvertSummary = ({ id, category, title, moneyTotal, onAdvertSelected }) => {
+// const AdvertSummary = ({ id, category, title, moneyTotal, onAdvertSelected }) => {
+
+const AdvertSummary = ({ advert, onAdvertSelected }) => {
 
     // Determine whether to use price (car or property) or salary (job)
     let moneyTitle;
-    if (category === "JOB") {
+    if (advert.category === "JOB") {
         moneyTitle = "Salary";
     } else {
         moneyTitle = "Price";
     }
 
-
+    
     const handleClick = () => {
-        onAdvertSelected(id, category)
+        onAdvertSelected(advert)
     }
 
     return (
-        <p key={id + category} className="advert-row" onClick={ handleClick }> <b>{category}</b> {title} <b>{moneyTitle}:</b> £{moneyTotal}</p>
+        <p key={advert.id + advert.category} className="advert-row" onClick={ handleClick }> <b>{advert.category}</b> {advert.title} <b>{moneyTitle}:</b> £{advert.price || advert.salary}</p>
     )
 
 }

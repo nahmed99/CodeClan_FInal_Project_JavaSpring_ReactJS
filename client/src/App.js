@@ -40,7 +40,7 @@ function App() {
   // }
 
 
-  const onAdvertSelected = (id, category) => {
+  const onAdvertSelected = (advert) => {
     // Each time the user clicks on an advert summary, we
     // want the full advert to be displayed to the user.
 
@@ -51,30 +51,31 @@ function App() {
     // setSelectedId(id); 
     // setSelectedCategory(category);
 
-    if (category === "CAR") {
-      getCarAdvert(id)
-      .then((advert) => {
-        console.log(advert);
-        setOneAdvert(advert);
-      });
-    }
+    // if (category === "CAR") {
+    //   getCarAdvert(id)
+    //   .then((advert) => {
+    //     console.log(advert);
+    //     setOneAdvert(advert);
+    //   });
+    // }
 
-    if (category === "JOB") {
-      getJobAdvert(id)
-      .then((advert) => {
-        console.log(advert);
-        setOneAdvert(advert);
-      });
-    }
+    // if (category === "JOB") {
+    //   getJobAdvert(id)
+    //   .then((advert) => {
+    //     console.log(advert);
+    //     setOneAdvert(advert);
+    //   });
+    // }
 
-    if (category === "PROPERTY") {
-      getPropertyAdvert(id)
-      .then((advert) => {
-        console.log(advert);
-        setOneAdvert(advert);
-      });
-    }
+    // if (category === "PROPERTY") {
+    //   getPropertyAdvert(id)
+    //   .then((advert) => {
+    //     console.log(advert);
+    //     setOneAdvert(advert);
+    //   });
+    // }
 
+    setOneAdvert(advert);
     setTrigger(true);
   }
 
