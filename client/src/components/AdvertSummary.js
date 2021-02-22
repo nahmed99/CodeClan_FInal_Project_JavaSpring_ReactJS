@@ -17,7 +17,7 @@ const AdvertSummary = ({ advert, onAdvertSelected }) => {
 
     return (
         
-        <tr key={advert.title} className="advert-row" onClick={ handleClick }>
+        <tr className="advert-row" onClick={ handleClick }>
             <td><b>{advert.category}</b></td>
             <td> &nbsp; {advert.title}</td>
             <td> &nbsp; <b>{moneyTitle}:</b></td>

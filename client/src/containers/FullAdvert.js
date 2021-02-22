@@ -11,7 +11,7 @@ const FullAdvert = ({ advert, trigger, setTrigger }) => {
         <div className="popup">
 
             <div className="popup-inner">
-                <button className="close-btn" onClick={() => setTrigger(false)}>❌</button>
+                <button className="close-btn" onClick={() => setTrigger(false)}>✖️</button>
             
 
             {advert.category === "CAR" &&

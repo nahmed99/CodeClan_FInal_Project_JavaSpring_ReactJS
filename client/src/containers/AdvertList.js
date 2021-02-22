@@ -6,7 +6,7 @@ const AdvertList = ({ adverts, onAdvertSelected }) => {
     const advertNodes = adverts.map((advert) => {
 
         return (
-            <AdvertSummary
+            <AdvertSummary key={advert.title}
             advert={advert}
             onAdvertSelected={onAdvertSelected}
             />

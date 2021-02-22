@@ -55,14 +55,14 @@ public class DataLoader implements ApplicationRunner {
         CarAdvert carAdvert = new CarAdvert(CategoryType.CAR, "Good car for sale",
                 "very good runner, low mileage", 25.00, cust1,
                 "Fird", "Iscort", 1999, TransmissionType.MANUAL,
-                5, 5, "Black", 500.00, imgURL1);
+                5, 5, "Black", 595.95, imgURL1);
         carAdvertRepository.save(carAdvert);
 
 
         CarAdvert carAdvert2 = new CarAdvert(CategoryType.CAR, "Car for quick sale",
                 "very good runner, ave mileage", 25.00, cust2,
                 "Jaguar", "XJS", 2013, TransmissionType.AUTOMATIC,
-                5, 4, "Gold", 7950.00, imgURL3);
+                5, 4, "Gold", 7950.45, imgURL3);
         carAdvertRepository.save(carAdvert2);
 
 
@@ -73,18 +73,18 @@ public class DataLoader implements ApplicationRunner {
 
         JobAdvert jobAdvert2 = new JobAdvert(CategoryType.JOB, "Chef",
                 "Evening and weekend working required", 10.00, cust2,
-                "Hospitality", JobType.PERMANENT, 15.00);
+                "Hospitality", JobType.PERMANENT, 15.95);
         jobAdvertRepository.save(jobAdvert2);
 
         JobAdvert jobAdvert3 = new JobAdvert(CategoryType.JOB, "Dish washer",
                 "Evening and weekend working required", 10.00, cust2,
-                "Hospitality", JobType.PERMANENT, 10.00);
+                "Hospitality", JobType.PERMANENT, 10.45);
         jobAdvertRepository.save(jobAdvert3);
 
         PropertyAdvert propertyAdvert = new PropertyAdvert(CategoryType.PROPERTY, "Bungalow For Sale",
                 "Pleasantly located bungalow", 95.00, cust3,
                 "Bungalow", "Next to the tree, West High Street", "G22 CHT", 3,
-                345000, imgURL2);
+                345000.99, imgURL2);
         propertyAdvertRepository.save(propertyAdvert);
 
 

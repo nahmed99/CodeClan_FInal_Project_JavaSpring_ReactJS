@@ -24,7 +24,7 @@ function App() {
     getAllAdverts(searchString, category)
     .then((adverts) => {
       setAdverts(adverts);
-      console.log(adverts);
+      // console.log(adverts);
     })
   }, []);
 
