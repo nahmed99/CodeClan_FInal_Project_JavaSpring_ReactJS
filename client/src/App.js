@@ -6,6 +6,7 @@ import FullAdvert from './containers/FullAdvert';
 import { ScrollView } from "@cantonjs/react-scroll-view";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './containers/Navbar';
+import LoginForm from './containers/LoginForm';
 
 
 function App() {
@@ -86,7 +87,7 @@ function App() {
 
         <div className='content'>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <section className="list-section">
                 <ScrollView className="scrollview-data">
                   <AdvertList className="advert-list" adverts={adverts} onAdvertSelected={onAdvertSelected}/>
@@ -94,11 +95,13 @@ function App() {
               </section>
 
               <section className="full-advert-section">
-                {/* <ScrollView className="scrollview-data"> */}
                   <FullAdvert className="full-advert" advert={oneAdvert} trigger={trigger} setTrigger={setTrigger}/>
-                {/* </ScrollView> */}
               </section>
               
+            </Route>
+
+            <Route path="/login">
+              <LoginForm />
             </Route>
           </Switch>
         </div>
