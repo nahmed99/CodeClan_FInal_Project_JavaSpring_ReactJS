@@ -1,4 +1,42 @@
 
+* {
+  margin: 0;
+}
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid powderblue;
+}
+
+.navbar h1 {
+  color: powderblue;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar a {
+  margin-left: 15px;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.navbar a:hover {
+  color: orchid;
+}
+
+.content {
+  max-width: 675px;
+  margin: 35px auto;
+  padding: 15px;
+}
+
+
 .scrollview-data {
   /* background-color: rgb(202, 217, 245); */
   background-color: powderblue;

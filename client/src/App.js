@@ -6,7 +6,6 @@ import FullAdvert from './containers/FullAdvert';
 import { ScrollView } from "@cantonjs/react-scroll-view";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './containers/Navbar';
-import NavbarLogged from './containers/NavbarLogged';
 
 
 function App() {
@@ -80,12 +79,9 @@ function App() {
         <header className="header-section"> 
         {/* Only one naviogation bar will be shown - one when user
          is NOT logged in, or the other when user IS logged in */}
-          {!loggedIn &&
-            <Navbar />
-          }
-          {loggedIn &&
-            <NavbarLogged />
-          }
+          
+            <Navbar loggedIn={ loggedIn }/>
+
         </header>
 
         <div className='content'>
