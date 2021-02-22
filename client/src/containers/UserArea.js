@@ -1,79 +1,62 @@
 import { useState, useEffect } from 'react';
 import {getCustomer} from '../services/CustomerService';
+import {deleteCarAdvert} from '../services/CarService';
+import {deleteJobAdvert} from '../services/JobService';
+import {deletePropertyAdvert} from '../services/PropertyService';
 import CustomerAds from './CustomerAds';
 
 const UserArea = () => {
 
     const [customer, setCustomer] = useState(null);
 
-    console.log("We are inside UserArea");
-
     useEffect(() => {
-        
-        console.log("We are inside UserArea, useEffect***");
 
         getCustomer(2)
         .then((customerData) => {
             setCustomer(customerData);
         })
 
-      }, []);
+    }, []);
 
 
 
       const onAdvertSelected = (advert) => {
-        // Each time the user clicks on an advert summary, we
-        // want the full advert to be displayed to the user.
+        console.log(advert.category);
+
+
+        // The following are just a TEST. Re-do with correct code later!!!
+
+        // The following are just a TEST. Re-do with correct code later!!!
+
+        // The following are just a TEST. Re-do with correct code later!!!
     
-        // if (category === "CAR") {
-        //   getCarAdvert(id)
-        //   .then((advert) => {
-        //     console.log(advert);
-        //     setOneAdvert(advert);
-        //   });
-        // }
-    
-        // if (category === "JOB") {
-        //   getJobAdvert(id)
-        //   .then((advert) => {
-        //     console.log(advert);
-        //     setOneAdvert(advert);
-        //   });
-        // }
-    
-        // if (category === "PROPERTY") {
-        //   getPropertyAdvert(id)
-        //   .then((advert) => {
-        //     console.log(advert);
-        //     setOneAdvert(advert);
-        //   });
-        // }
-    
-       
-      }
+        if (advert.category === "CAR") {
+            deleteCarAdvert(advert.id)
+            .then((resp) => {
+                console.log(resp);
+            });
+        }
 
+        if (advert.category === "JOB") {
+            deleteJobAdvert(advert.id)
+            .then((resp) => {
+                console.log(resp);
+            });
+        }
 
-    // const handleClick = () => {
-    //     setCustId(1);
+        if (advert.category === "PROPERTY") {
+            deletePropertyAdvert(advert.id)
+            .then((resp) => {
+                console.log(resp);
+            });
+        }
+    }
 
-    //     getCustomer(1)
-    //     .then((customerData) => {
-    //         setCustomer(customerData);
-
-    //         console.log(customer);
-    //         console.log("custId: " + custId);
-    //     });
-
-
-    //     console.log("OUTSIDE: " + customer);
-    //     console.log("OUTSIDE custId: " + custId);
-    // }
-
-
+ 
     return (
         <div className="user-area">
-            {/* <h3 onClick={handleClick}>Click to view your adverts.</h3> */}
-            <h4>Customer Name is:</h4>
+            {customer && <h4>{customer.firstName} {customer.secondName}, you have placed the following adds:</h4>}
+            <br></br>
             {customer && <CustomerAds customer={customer} onAdvertSelected={onAdvertSelected}/>}
         </div>
     );
