@@ -86,8 +86,6 @@ function App() {
           {loggedIn &&
             <NavbarLogged />
           }
-
-
         </header>
 
         <div className='content'>
