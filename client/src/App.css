@@ -52,6 +52,10 @@
   padding: 20px;
 }
 
+.advert-row td {
+  padding: 7px;
+}
+
 .advert-row:hover {
   background-color: rgb(164, 216, 235);
   border-radius: 5px;

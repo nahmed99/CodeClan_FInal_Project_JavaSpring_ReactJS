@@ -16,7 +16,14 @@ const AdvertSummary = ({ advert, onAdvertSelected }) => {
     }
 
     return (
-        <p key={advert.id + advert.category} className="advert-row" onClick={ handleClick }> <b>{advert.category}</b> {advert.title} <b>{moneyTitle}:</b> £{advert.price || advert.salary}</p>
+        
+        <tr key={advert.title} className="advert-row" onClick={ handleClick }>
+            <td><b>{advert.category}</b></td>
+            <td> &nbsp; {advert.title}</td>
+            <td> &nbsp; <b>{moneyTitle}:</b></td>
+            <td align="right"> &nbsp; £{advert.price || advert.salary}</td>
+        </tr>
+
     )
 
 }

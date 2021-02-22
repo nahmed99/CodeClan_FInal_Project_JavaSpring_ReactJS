@@ -14,9 +14,11 @@ const AdvertList = ({ adverts, onAdvertSelected }) => {
     });
 
     return (
-        <>
-            {advertNodes}
-        </>
+        <table>
+            <tbody>
+                {advertNodes}
+            </tbody>
+        </table>
     )
 }
 
