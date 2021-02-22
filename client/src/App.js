@@ -44,13 +44,6 @@ function App() {
     // Each time the user clicks on an advert summary, we
     // want the full advert to be displayed to the user.
 
-    // We only want React to react to one of the variables below,
-    // that will achieve our aim..? But what will happen if two
-    // adverts with same id are clicked in succession? Will we
-    // need to re-instate the category useState too?
-    // setSelectedId(id); 
-    // setSelectedCategory(category);
-
     // if (category === "CAR") {
     //   getCarAdvert(id)
     //   .then((advert) => {

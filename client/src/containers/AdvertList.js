@@ -6,13 +6,6 @@ const AdvertList = ({ adverts, onAdvertSelected }) => {
     const advertNodes = adverts.map((advert) => {
 
         return (
-            // <AdvertSummary
-            // id = {advert.id}
-            // category = {advert.category}
-            // title = {advert.title}
-            // moneyTotal = {advert.price || advert.salary}
-            // onAdvertSelected={onAdvertSelected}
-            // />
             <AdvertSummary
             advert={advert}
             onAdvertSelected={onAdvertSelected}
