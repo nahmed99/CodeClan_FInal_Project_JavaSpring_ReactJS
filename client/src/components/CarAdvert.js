@@ -24,6 +24,15 @@ const CarAdvert = ( {advert} ) => {
                     <td><b>Colour: </b> {advert.colour}</td>
                     <td><b>Price: </b> £{advert.price}</td>
                 </tr>
+                <tr>
+                    <th><b>Contact Details</b></th>
+                </tr>
+                <tr>
+                    <td><b>Name:</b> { advert.customer.firstName } { advert.customer.secondName }</td>
+                </tr>
+                <tr>
+                    <td><b>Email: </b> { advert.customer.email }</td>
+                </tr>
             </table>
     )
 }
