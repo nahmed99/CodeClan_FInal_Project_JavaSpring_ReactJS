@@ -30,7 +30,7 @@ const UpdateCarAdvert = () => {
 
 
     return (
-        <form className="stock-form" onSubmit={handleSubmit}>
+        <form className="ad-form" onSubmit={handleSubmit}>
 
             <label htmlFor="title">Title: </label>
             <textarea type="text" id="title" name="title" value={data.state["title"]}

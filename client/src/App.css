@@ -91,3 +91,34 @@
   right: 15px;
 
 }
+
+/* Create and update adverts */
+.ad-form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ad-form label {
+  text-align: left;
+  display: block;
+}
+
+.ad-form input, .ad-form textarea, .ad-form select {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border: 1px solid darkblue;
+  box-sizing: border-box;
+  display: block;
+}
+
+.ad-form button {
+  background: powderblue;
+  color: black;
+  border: 0;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
