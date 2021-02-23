@@ -109,9 +109,33 @@
   padding: 5px 10px;
   margin: 10px 0;
   border: 1px solid darkblue;
+  border-radius: 5px;
   box-sizing: border-box;
   display: block;
 }
+
+/*
+.ad-form textarea {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.ad-form input, .ad-form select {
+  width: 50%;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+}
+*/
+
 
 .ad-form button {
   background: powderblue;
