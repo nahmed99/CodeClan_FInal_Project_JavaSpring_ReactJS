@@ -26,6 +26,7 @@ export const getCarAdvert = (id) => {
 
 // Create record
 export const addCarAdvert = (carAdvert) => {
+    console.log("THIS IS THE DA?TA TO UPDATE FOR CAR::::::" + carAdvert);
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(carAdvert),

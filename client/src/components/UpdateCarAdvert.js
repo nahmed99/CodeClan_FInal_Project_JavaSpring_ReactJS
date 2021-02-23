@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
 import { useParams, useLocation } from "react-router-dom";
+import { getCarAdvert, updateCarAdvert } from '../services/CarService';
 
 
 const UpdateCarAdvert = () => {
@@ -20,16 +20,81 @@ const UpdateCarAdvert = () => {
     const [make, setMake] = useState(data.state["make"]);
     const [model, setModel] = useState(data.state["model"]);
     const [regYear, setRegYear] = useState(data.state["regYear"]);
+    const [transmission, setTransmission] = useState(data.state["transmission"]);
     const [numSeats, setNumSeats] = useState(data.state["numSeats"]);
     const [numDoors, setNumDoors] = useState(data.state["numDoors"]);
     const [colour, setColour] = useState(data.state["colour"]);
     const [price, setPrice] = useState(data.state["price"]);
+    const [carAdvert, setCarAdvert] = useState([]);
+
+
+    console.log("This is what the data looks like: " + JSON.stringify(data.state));
+    
+// data.state["title"] = "Does it change?"; YEs it did change!!!
 
 
     const handleSubmit = (ev) => {
-        ev.preventDefault();
         
-        console.log("Update To Be Submitted");
+        ev.preventDefault(); // prevent the page from refreshing
+
+        // Get the advert that we are to update (the data that 
+        // we have been using in this function comes from the
+        // CUSTOMER TABLE!!! So we need to retrieve the data 
+        // from CarAdvert, and then update that and send back!
+
+
+        let newCarAdvert;
+
+        getCarAdvert(data.state["id"])
+        .then((advert) => {
+            newCarAdvert = advert;
+            setCarAdvert(advert);
+        // console.log(advert);
+        })
+
+
+        // Set the new value(s)
+        carAdvert["title"] = title;
+        carAdvert.description = description;
+        carAdvert.make = make;
+        carAdvert.model = model;
+        carAdvert.regYear = regYear;
+        carAdvert.transmission = transmission;
+        carAdvert.numSeats = numSeats;
+        carAdvert.numDoors = numDoors;
+        carAdvert.colour = colour;
+        carAdvert.price = price;
+
+        // data.state["title"] = title;
+        // data.state["description"] = description;
+        // data.state["make"] = make;
+        // data.state["model"] = model;
+        // data.state["regYear"] = regYear;
+        // data.state["transmission"] = transmission;
+        // data.state["numSeats"] = numSeats;
+        // data.state["numDoors"] = numDoors;
+        // data.state["colour"] = colour;
+        // data.state["price"] = price;
+
+       // Update the advert
+       
+       updateCarAdvert(carAdvert)
+       .then((respData) => {
+            console.log(respData);
+      })
+
+
+        // This is how you could probably set up the new Advert:
+        // *****************************************************
+
+        // const id = data.state["id"];
+        // const category = data.state["category"];
+        // const cost = data.state["cost"];
+        //  ¦
+        //  ¦
+        // const updatedAdvert = {id, category, title, description, cost, make, model, regYear, numSeats, numDoors, colour, price};
+        //
+
 
     }
 
@@ -62,6 +127,13 @@ const UpdateCarAdvert = () => {
 
         <label htmlFor="registration">Registration Year: </label>
         <input type="number" min="1900" max="2029" step="1" id="registration" name="registration" value={regYear} required onChange={(e) => setRegYear(e.target.value)}/>
+
+        <label htmlFor="make">Transmission: </label>
+        <select required >
+            <option selected="selected"  onChange={(e) => setTransmission(e.target.value)}>{transmission}</option>
+            <option value="manual">MANUAL</option>
+            <option value="automatic">AUTOMATIC</option>
+        </select>
 
         <label htmlFor="seats">Seats: </label>
         <input type="number" id="seats" name="seats" value={numSeats} required onChange={(e) => setNumSeats(e.target.value)}/>

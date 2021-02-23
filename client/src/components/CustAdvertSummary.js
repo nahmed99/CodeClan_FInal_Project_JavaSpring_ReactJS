@@ -12,9 +12,6 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
 
     
     const handleUpdate = () => {
-
-     
-
         // onActionSelected(advert, 'U')
     }
 
