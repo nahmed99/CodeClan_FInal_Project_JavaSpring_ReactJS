@@ -13,13 +13,7 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
     
     const handleUpdate = () => {
 
-        // <Link to={{ 
-        //     pathname: `/car/update/${advert.id}`, 
-        //     state: {
-        //         advert: advert
-        //     }
-        // }}>
-        // </Link>
+     
 
         // onActionSelected(advert, 'U')
     }
@@ -29,21 +23,23 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
     }
 
     return (
-        
-        <tr className="advert-row">
-            <td><b>{advert.category}</b></td>
-            <td> &nbsp; {advert.title}</td>
-            <td> &nbsp; <b>{moneyTitle}:</b></td>
-            <td align="right"> &nbsp; £{advert.price || advert.salary}</td>
-            <td  onClick={ handleUpdate }> &nbsp;  <Link to={{  
-            pathname: `/car/update/${advert.id}`, 
-            state: {
-                advert: advert
-            }
-        }}> ✎ </Link></td>
-            <td  onClick={ handleDelete }> &nbsp; 🗑</td>
 
-        </tr>
+        <>
+        
+            <tr className="advert-row">
+                <td><b>{advert.category}</b></td>
+                <td> &nbsp; {advert.title}</td>
+                <td> &nbsp; <b>{moneyTitle}:</b></td>
+                <td align="right"> &nbsp; £{advert.price || advert.salary}</td>
+                <td> &nbsp;  <Link to={{  
+                pathname: `/car/update/${advert.id}`, 
+                state: advert,
+            }}> ✎ </Link></td>
+                <td  onClick={ handleDelete }> &nbsp; 🗑</td>
+            </tr>
+
+                
+        </>
 
     )
 

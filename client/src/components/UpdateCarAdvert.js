@@ -1,8 +1,25 @@
-const UpdateCarAdvert = (advert) => {
+import { useParams, useLocation } from "react-router-dom";
+
+const UpdateCarAdvert = () => {
 
     console.log("Path: Inside UpdateCarAdvert.js");
 
-    
+
+    const { id } = useParams();
+    const data = useLocation();
+    // const { state } = useLocation();
+
+    console.log("Location PATHNAME: " + JSON.stringify(data.state));
+    console.dir("Location MY DATA: " + data.state["title"]);
+    // console.dir("Location STATE: " + state)
+
+    // data.state["title"] = "Does it change?";
+
+
+
+    console.log("Paramater from CustAdvertSummary Link: " + id);
+
+
 
     const handleSubmit = (ev) => {
         ev.preventDefault();
@@ -15,32 +32,32 @@ const UpdateCarAdvert = (advert) => {
     return (
         <form className="stock-form" onSubmit={handleSubmit}>
 
-            <label for="title">Title: </label>
-            <input type="text" id="title" name="title" value={advert.title}/>
+            <label htmlFor="title">Title: </label>
+            <input type="text" id="title" name="title" value={data.state["title"]}/>
 
-            <label for="description">Description: </label>
-            <input type="text" id="description" name="description" value={advert.description} />
+            <label htmlFor="description">Description: </label>
+            <input type="text" id="description" name="description" value={data.state["description"]} />
 
-            <label for="make">Make: </label>
-            <input type="text" id="make" name="make" value={advert.make}/>
+            <label htmlFor="make">Make: </label>
+            <input type="text" id="make" name="make" value={data.state["make"]}/>
 
-            <label for="model">Model: </label>
-            <input type="text" id="model" name="model" value={advert.model}/>
+            <label htmlFor="model">Model: </label>
+            <input type="text" id="model" name="model" value={data.state["model"]}/>
 
-            <label for="registration">Registration Year: </label>
-            <input type="text" id="registration" name="registration" value={advert.regYear}/>
+            <label htmlFor="registration">Registration Year: </label>
+            <input type="text" id="registration" name="registration" value={data.state["regYear"]}/>
 
-            <label for="seats">Seats: </label>
-            <input type="text" id="seats" name="seats" value={advert.numSeats}/>
+            <label htmlFor="seats">Seats: </label>
+            <input type="text" id="seats" name="seats" value={data.state["numSeats"]}/>
 
-            <label for="doors">Doors: </label>
-            <input type="text" id="doors" name="doors" value={advert.numDoors}/>
+            <label htmlFor="doors">Doors: </label>
+            <input type="text" id="doors" name="doors" value={data.state["numDoors"]}/>
 
-            <label for="colour">Colour: </label>
-            <input type="text" id="colour" name="colour" value={advert.colour}/>
+            <label htmlFor="colour">Colour: </label>
+            <input type="text" id="colour" name="colour" value={data.state["colour"]}/>
 
-            <label for="price">Price: </label>
-            <input type="text" id="price" name="price" value={advert.price}/>
+            <label htmlFor="price">Price: </label>
+            <input type="text" id="price" name="price" value={data.state["price"]}/>
 
             <input
                 type="submit"

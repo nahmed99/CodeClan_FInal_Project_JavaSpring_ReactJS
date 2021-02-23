@@ -54,6 +54,7 @@
 
 .advert-row td {
   padding: 7px;
+  text-decoration: none;
 }
 
 .advert-row:hover {
