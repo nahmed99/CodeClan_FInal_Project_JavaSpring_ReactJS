@@ -24,7 +24,7 @@ export const getJobAdvert = (id) => {
 }
 
 // Create record
-export const addJobAdverts = (jobAdvert) => {
+export const addJobAdvert = (jobAdvert) => {
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(jobAdvert),

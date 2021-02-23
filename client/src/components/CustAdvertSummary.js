@@ -1,4 +1,4 @@
-const AdvertSummary = ({ advert, onAdvertSelected }) => {
+const CustAdvertSummary = ({ advert, onActionSelected }) => {
 
     // Determine whether to use price (car or property) or salary (job)
     let moneyTitle;
@@ -9,13 +9,17 @@ const AdvertSummary = ({ advert, onAdvertSelected }) => {
     }
 
     
-    const handleClick = () => {
-        onAdvertSelected(advert)
+    const handleUpdate = () => {
+        onActionSelected(advert, 'U')
+    }
+
+    const handleDelete = () => {
+        onActionSelected(advert, 'D')
     }
 
     return (
         
-        <tr className="advert-row" onClick={ handleClick }>
+        <tr className="advert-row" onClick={ handleDelete }>
             <td><b>{advert.category}</b></td>
             <td> &nbsp; {advert.title}</td>
             <td> &nbsp; <b>{moneyTitle}:</b></td>
@@ -26,4 +30,4 @@ const AdvertSummary = ({ advert, onAdvertSelected }) => {
 
 }
 
-export default AdvertSummary;
+export default CustAdvertSummary;

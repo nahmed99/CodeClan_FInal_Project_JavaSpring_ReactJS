@@ -24,7 +24,7 @@ export const getPropertyAdvert = (id) => {
 }
 
 // Create record
-export const addPropertyAdverts = (propertyAdvert) => {
+export const addPropertyAdvert = (propertyAdvert) => {
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(propertyAdvert),

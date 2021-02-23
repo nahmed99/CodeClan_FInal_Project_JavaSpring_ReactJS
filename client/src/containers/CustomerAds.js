@@ -1,7 +1,7 @@
-import AdvertSummary from '../components/AdvertSummary';
+import CustAdvertSummary from '../components/CustAdvertSummary';
 
 
-const CustomerAds = ({ customer, onAdvertSelected }) => {
+const CustomerAds = ({ customer, onActionSelected }) => {
     
 
     const carAdvertNodes = customer.carAdverts.map((objectMapped, index) => {
@@ -10,9 +10,9 @@ const CustomerAds = ({ customer, onAdvertSelected }) => {
         // console.log(index);
 
         return (
-            <AdvertSummary key={objectMapped.title}
+            <CustAdvertSummary key={objectMapped.title}
             advert={objectMapped}
-            onAdvertSelected={onAdvertSelected}
+            onActionSelected={onActionSelected}
             />
         )
     });
@@ -23,9 +23,9 @@ const CustomerAds = ({ customer, onAdvertSelected }) => {
         // console.log(index);
 
         return (
-            <AdvertSummary key={objectMapped.title}
+            <CustAdvertSummary key={objectMapped.title}
             advert={objectMapped}
-            onAdvertSelected={onAdvertSelected}
+            onActionSelected={onActionSelected}
             />
         )
     });
@@ -36,9 +36,9 @@ const CustomerAds = ({ customer, onAdvertSelected }) => {
         // console.log(index);
 
         return (
-            <AdvertSummary key={objectMapped.title}
+            <CustAdvertSummary key={objectMapped.title}
             advert={objectMapped}
-            onAdvertSelected={onAdvertSelected}
+            onActionSelected={onActionSelected}
             />
         )
     });

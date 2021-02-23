@@ -25,7 +25,7 @@ export const getCarAdvert = (id) => {
 }
 
 // Create record
-export const addCarAdverts = (carAdvert) => {
+export const addCarAdvert = (carAdvert) => {
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(carAdvert),
