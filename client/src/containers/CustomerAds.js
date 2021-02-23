@@ -6,7 +6,7 @@ const CustomerAds = ({ customer, onActionSelected }) => {
 
     const carAdvertNodes = customer.carAdverts.map((objectMapped, index) => {
 
-        console.log("In CustomerAds.js: " + JSON.stringify(objectMapped));
+        // console.log("In CustomerAds.js: " + JSON.stringify(objectMapped));
         // console.log(index);
 
         return (

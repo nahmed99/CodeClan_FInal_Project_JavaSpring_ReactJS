@@ -5,9 +5,8 @@ import CustomerAds from './CustomerAds';
 
 const UserArea = () => {
 
-    console.log("Path: Inside UserArea.js");
+    // console.log("Path: Inside UserArea.js");
 
-    
 
     const [customer, setCustomer] = useState(null);
 

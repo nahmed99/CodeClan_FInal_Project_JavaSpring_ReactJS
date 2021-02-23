@@ -13,8 +13,6 @@ import UpdateCarAdvert from './components/UpdateCarAdvert';
 
 function App() {
 
-  console.log("Path: Inside App.js");
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);

@@ -1,32 +1,18 @@
-import { useState, useEffect } from 'react';
-import { useParams, useLocation } from "react-router-dom";
-import { getCarAdvert, updateCarAdvert } from '../services/CarService';
-import { updateCustomer } from '../services/CustomerService';
 
-
-const UpdateCarAdvert = () => {
-
-    // console.log("Path: Inside UpdateCarAdvert.js");
-
-
-    // Grab data passed in from CustomerAds container
-    const { id } = useParams();
-    const data = useLocation();
-    
-    // const { state } = useLocation(); this workds too!
+const AddCarAdvert = () => {
 
     
     // Set up state variables to handle any changes made to the form
-    const [title, setTitle] = useState(data.state["title"]);
-    const [description, setDescription] = useState(data.state["description"]);
-    const [make, setMake] = useState(data.state["make"]);
-    const [model, setModel] = useState(data.state["model"]);
-    const [regYear, setRegYear] = useState(data.state["regYear"]);
-    const [transmission, setTransmission] = useState(data.state["transmission"]);
-    const [numSeats, setNumSeats] = useState(data.state["numSeats"]);
-    const [numDoors, setNumDoors] = useState(data.state["numDoors"]);
-    const [colour, setColour] = useState(data.state["colour"]);
-    const [price, setPrice] = useState(data.state["price"]);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [make, setMake] = useState("");
+    const [model, setModel] = useState("");
+    const [regYear, setRegYear] = useState("");
+    const [transmission, setTransmission] = useState("");
+    const [numSeats, setNumSeats] = useState("");
+    const [numDoors, setNumDoors] = useState("");
+    const [colour, setColour] = useState("");
+    const [price, setPrice] = useState("");
     const [carAdvert, setCarAdvert] = useState([]);
 
 
