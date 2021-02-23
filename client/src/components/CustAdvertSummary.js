@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CustAdvertSummary = ({ advert, onActionSelected }) => {
 
     // Determine whether to use price (car or property) or salary (job)
@@ -10,7 +12,16 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
 
     
     const handleUpdate = () => {
-        onActionSelected(advert, 'U')
+
+        // <Link to={{ 
+        //     pathname: `/car/update/${advert.id}`, 
+        //     state: {
+        //         advert: advert
+        //     }
+        // }}>
+        // </Link>
+
+        // onActionSelected(advert, 'U')
     }
 
     const handleDelete = () => {
@@ -19,11 +30,19 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
 
     return (
         
-        <tr className="advert-row" onClick={ handleDelete }>
+        <tr className="advert-row">
             <td><b>{advert.category}</b></td>
             <td> &nbsp; {advert.title}</td>
             <td> &nbsp; <b>{moneyTitle}:</b></td>
             <td align="right"> &nbsp; £{advert.price || advert.salary}</td>
+            <td  onClick={ handleUpdate }> &nbsp;  <Link to={{  
+            pathname: `/car/update/${advert.id}`, 
+            state: {
+                advert: advert
+            }
+        }}> ✎ </Link></td>
+            <td  onClick={ handleDelete }> &nbsp; 🗑</td>
+
         </tr>
 
     )

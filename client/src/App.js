@@ -8,9 +8,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './containers/Navbar';
 import LoginForm from './containers/LoginForm';
 import UserArea from './containers/UserArea';
+import UpdateCarAdvert from './components/UpdateCarAdvert';
 
 
 function App() {
+
+  console.log("Path: Inside App.js");
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [trigger, setTrigger] = useState(false);
@@ -113,6 +116,18 @@ function App() {
             <Route path="/user">
               <UserArea />
             </Route>
+
+            <Route path="/car/update/:id">
+              <UpdateCarAdvert /> 
+            </Route>
+
+            {/* <Route path="/job/update/:id">
+              <UpdateJobAdvert /> 
+            </Route>
+
+            <Route path="/property/update/:id">
+              <UpdatePropertyAdvert />
+            </Route> */}
 
           </Switch>
         </div>

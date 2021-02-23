@@ -5,6 +5,7 @@ import {addPropertyAdvert, updatePropertyAdvert, deletePropertyAdvert} from '../
 
 export const fulfilCarAction = (advert, action) => {
 
+
     if (action === 'C') {
         addCarAdvert(advert)
         .then((resp) => {
@@ -13,10 +14,17 @@ export const fulfilCarAction = (advert, action) => {
     }
 
     if (action === 'U') {
-        updateCarAdvert(advert)
-        .then((resp) => {
-            console.log(resp);
-        });
+
+
+        // This is where the form should be displayed!!!
+
+
+        
+
+        // updateCarAdvert(advert)
+        // .then((resp) => {
+        //     console.log(resp);
+        // });
     }
 
     if (action === 'D') {

@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import {getCustomer} from '../services/CustomerService';
-import { fulfilCarAction, fulfilJobAction , fulfilPropertyAction } from '../services/Actions';
+import { fulfilCarAction, fulfilJobAction , fulfilPropertyAction } from '../helpers/Actions';
 import CustomerAds from './CustomerAds';
 
 const UserArea = () => {
+
+    console.log("Path: Inside UserArea.js");
+
+    
 
     const [customer, setCustomer] = useState(null);
 
