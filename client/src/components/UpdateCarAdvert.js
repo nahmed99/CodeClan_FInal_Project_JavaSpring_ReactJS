@@ -61,13 +61,13 @@ const UpdateCarAdvert = () => {
         <input type="text" id="model" name="model" value={model} required onChange={(e) => setModel(e.target.value)}/>
 
         <label htmlFor="registration">Registration Year: </label>
-        <input type="text" id="registration" name="registration" value={regYear} required onChange={(e) => setRegYear(e.target.value)}/>
+        <input type="number" min="1900" max="2029" step="1" id="registration" name="registration" value={regYear} required onChange={(e) => setRegYear(e.target.value)}/>
 
         <label htmlFor="seats">Seats: </label>
-        <input type="text" id="seats" name="seats" value={numSeats} required onChange={(e) => setNumSeats(e.target.value)}/>
+        <input type="number" id="seats" name="seats" value={numSeats} required onChange={(e) => setNumSeats(e.target.value)}/>
 
         <label htmlFor="doors">Doors: </label>
-        <input type="text" id="doors" name="doors" value={numDoors} required onChange={(e) => setNumDoors(e.target.value)}/>
+        <input type="number" id="doors" name="doors" value={numDoors} required onChange={(e) => setNumDoors(e.target.value)}/>
 
         <label htmlFor="colour">Colour: </label>
         <input type="text" id="colour" name="colour" value={colour} required onChange={(e) => setColour(e.target.value)}/>
