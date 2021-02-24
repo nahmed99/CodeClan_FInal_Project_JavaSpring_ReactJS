@@ -10,6 +10,7 @@ import LoginForm from './containers/LoginForm';
 import UserArea from './containers/UserArea';
 import AdvertUpdate from './components/AdvertUpdate';
 import AdvertAdd from './components/AdvertAdd';
+import AdvertDelete from './components/AdvertDelete';
 import SearchForm from './containers/SearchForm';
 
 
@@ -23,6 +24,10 @@ function App() {
   const [category, setCategory] = useState("");
   const [oneAdvert, setOneAdvert] = useState([]);
   const [searchRequested, setSearchRequested] = useState("");
+
+  // Image uploads
+  const [image, setImage] = useState('');
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -102,6 +107,10 @@ function App() {
 
             <Route path="/add/:id">
               <AdvertAdd /> 
+            </Route>
+
+            <Route path="/delete/:id">
+              <AdvertDelete /> 
             </Route>
 
           </Switch>

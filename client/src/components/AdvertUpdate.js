@@ -109,7 +109,7 @@ const AdvertUpdate = () => {
         ev.preventDefault(); // prevent the page from refreshing
 
         
-        if (setUpdateStatus) {
+        if (updateStatus) {
             history.push("/user");
         }
 

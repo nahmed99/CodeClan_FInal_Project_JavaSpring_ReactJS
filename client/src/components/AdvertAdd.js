@@ -61,6 +61,12 @@ const AdvertAdd = () => {
     const [updateStatus, setUpdateStatus] = useState(false);
 
 
+    // Image uploads
+    const [image, setImage] = useState('');
+    const [loading, setLoading] = useState(false);
+
+
+
     useEffect(() => {
         setCustomerData(data.state);
     }, []);  
@@ -238,17 +244,44 @@ const AdvertAdd = () => {
     }
 
 
+
+    // Currently got image uploading, but not doing anything with 
+    // it - i.e., not storing its (cloudinary url) or anything. One
+    // to complete in the future!
+    const uploadImage = async e => {
+        const files = e.target.files;
+        const data  = new FormData();
+        data.append('file', files[0]);
+        data.append('upload_preset', 'adservice'); // This is the upload preset name on cloudinary.com
+        setLoading(true);
+        const res = await fetch(
+            'https://api.cloudinary.com/v1_1/nahmed99/image/upload',
+            {
+                method: 'POST',
+                body: data
+            }
+        );
+
+        const file = await res.json();
+        setImage(file.secure_url);
+        setLoading(false);
+    }
+
+
+
     const handleClick = (ev) => {
         
         ev.preventDefault(); // prevent the page from refreshing
-
         
-        if (setUpdateStatus) {
+        if (updateStatus) {
             history.push("/user");
         }
 
     }
 
+
+    // For images:
+    // 	https://api.cloudinary.com/v1_1/nahmed99
 
     return (
 
@@ -314,7 +347,18 @@ const AdvertAdd = () => {
                 <label htmlFor="price">Price: </label>
                 <input type="number" id="price" name="price" value={price} required onChange={(e) => setPrice(e.target.value)}/>
 
+
+                <label htmlFor="imageUrl">Image Upload: </label>
+                <input type="file" id="imageUrl" name="file" placeholder="Upload an image" onChange={uploadImage}/>
+                {loading ? (
+                    <h3>loading...</h3>
+                ) : (
+                    <img src={image} style={{width: '350px'}} />
+                ) }
+
+
               </div>}
+
 
               {showJobForm && 
               <div>

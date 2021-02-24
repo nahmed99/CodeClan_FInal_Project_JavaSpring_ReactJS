@@ -32,7 +32,10 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
                 pathname: `/update/${advert.id}`, 
                 state: advert,
             }}> ✎ </Link></td>
-                <td  onClick={ handleDelete }> &nbsp; 🗑</td>
+                <td  onClick={ handleDelete }> &nbsp; <Link to={{  
+                pathname: `/delete/${advert.id}`, 
+                state: advert,
+            }}> 🗑 </Link></td>
             </tr>
 
                 
