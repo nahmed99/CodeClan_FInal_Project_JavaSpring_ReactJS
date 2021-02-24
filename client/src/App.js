@@ -8,7 +8,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './containers/Navbar';
 import LoginForm from './containers/LoginForm';
 import UserArea from './containers/UserArea';
-import UpdateCarAdvert from './components/UpdateCarAdvert';
+import CarAdvertUpdate from './components/CarAdvertUpdate';
+import CarAdvertAdd from './components/CarAdvertAdd';
 
 
 function App() {
@@ -116,7 +117,7 @@ function App() {
             </Route>
 
             <Route path="/car/update/:id">
-              <UpdateCarAdvert /> 
+              <CarAdvertUpdate /> 
             </Route>
 
             {/* <Route path="/job/update/:id">
@@ -126,6 +127,10 @@ function App() {
             <Route path="/property/update/:id">
               <UpdatePropertyAdvert />
             </Route> */}
+
+            <Route path="/car/add/:id">
+              <CarAdvertAdd /> 
+            </Route>
 
           </Switch>
         </div>

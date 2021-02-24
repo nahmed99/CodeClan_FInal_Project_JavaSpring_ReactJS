@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import {getCustomer} from '../services/CustomerService';
 import { fulfilCarAction, fulfilJobAction , fulfilPropertyAction } from '../helpers/Actions';
 import CustomerAds from './CustomerAds';
@@ -40,6 +41,10 @@ const UserArea = () => {
  
     return (
         <div className="user-area">
+            {customer && <Link to={{  
+                pathname: `/car/add/${customer.id}`, 
+                state: customer,
+            }}> <button>New</button> </Link>}
             {customer && <h4>{customer.firstName} {customer.secondName}, you have placed the following adds:</h4>}
             <br></br>
             {customer && <CustomerAds customer={customer} onActionSelected={onActionSelected}/>}

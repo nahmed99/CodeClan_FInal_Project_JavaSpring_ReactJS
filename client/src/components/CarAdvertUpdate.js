@@ -1,18 +1,31 @@
+import { useState, useEffect } from 'react';
+import { useParams, useLocation } from "react-router-dom";
+import { getCarAdvert, updateCarAdvert } from '../services/CarService';
 
-const AddCarAdvert = () => {
+
+const CarAdvertUpdate = () => {
+
+    // console.log("Path: Inside UpdateCarAdvert.js");
+
+
+    // Grab data passed in from CustomerAds container
+    const { id } = useParams();
+    const data = useLocation();
+    
+    // const { state } = useLocation(); this workds too!
 
     
     // Set up state variables to handle any changes made to the form
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [make, setMake] = useState("");
-    const [model, setModel] = useState("");
-    const [regYear, setRegYear] = useState("");
-    const [transmission, setTransmission] = useState("");
-    const [numSeats, setNumSeats] = useState("");
-    const [numDoors, setNumDoors] = useState("");
-    const [colour, setColour] = useState("");
-    const [price, setPrice] = useState("");
+    const [title, setTitle] = useState(data.state["title"]);
+    const [description, setDescription] = useState(data.state["description"]);
+    const [make, setMake] = useState(data.state["make"]);
+    const [model, setModel] = useState(data.state["model"]);
+    const [regYear, setRegYear] = useState(data.state["regYear"]);
+    const [transmission, setTransmission] = useState(data.state["transmission"]);
+    const [numSeats, setNumSeats] = useState(data.state["numSeats"]);
+    const [numDoors, setNumDoors] = useState(data.state["numDoors"]);
+    const [colour, setColour] = useState(data.state["colour"]);
+    const [price, setPrice] = useState(data.state["price"]);
     const [carAdvert, setCarAdvert] = useState([]);
 
 
@@ -33,15 +46,7 @@ const AddCarAdvert = () => {
         
         ev.preventDefault(); // prevent the page from refreshing
 
-        function getAdvertData () {
-            getCarAdvert(data.state["id"])
-            .then((advert) => {
-                setCarAdvert(advert);
-            // console.log(advert);
-            });
-        }
-
-
+        
         function updateAdvert() {
 
             // Set the new value(s) - both methods (below) work.
@@ -116,7 +121,7 @@ const AddCarAdvert = () => {
         <label htmlFor="registration">Registration Year: </label>
         <input type="number" min="1900" max="2029" step="1" id="registration" name="registration" value={regYear} required onChange={(e) => setRegYear(e.target.value)}/>
 
-        <label htmlFor="make">Transmission: </label>
+        <label htmlFor="transmission">Transmission: </label>
         <select required defaultValue={transmission} onChange={(e) => setTransmission(e.target.value)}>
             <option>{transmission}</option>
             <option value="manual">MANUAL</option>
@@ -141,4 +146,4 @@ const AddCarAdvert = () => {
     );
 }
 
-export default UpdateCarAdvert;
+export default CarAdvertUpdate;
