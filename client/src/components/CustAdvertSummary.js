@@ -29,7 +29,7 @@ const CustAdvertSummary = ({ advert, onActionSelected }) => {
                 <td> &nbsp; <b>{moneyTitle}:</b></td>
                 <td align="right"> &nbsp; £{advert.price || advert.salary}</td>
                 <td> &nbsp;  <Link to={{  
-                pathname: `/car/update/${advert.id}`, 
+                pathname: `/update/${advert.id}`, 
                 state: advert,
             }}> ✎ </Link></td>
                 <td  onClick={ handleDelete }> &nbsp; 🗑</td>

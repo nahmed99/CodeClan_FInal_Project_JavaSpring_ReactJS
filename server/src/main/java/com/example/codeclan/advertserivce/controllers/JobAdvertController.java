@@ -48,6 +48,7 @@ public class JobAdvertController {
         return new ResponseEntity<>(jobAdvert, HttpStatus.CREATED);
     }
 
+
     // Patch (update) CarAdvert - note the use of the id as parameter input in url,
     // but no use of it (directly) in the parameters list of the function - the
     // function uses the jobAdvert object that is sent in the request body. The id

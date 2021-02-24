@@ -15,6 +15,7 @@ import AdvertAdd from './components/AdvertAdd';
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(0);
   const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");
@@ -77,8 +78,9 @@ function App() {
     setTrigger(true);
   }
 
-  const onLoginClicked = (loginStatus) => {
+  const onLoginClicked = (loginStatus, user) => {
     setLoggedIn(loginStatus);
+    setUserId(user)
   }
 
 
@@ -113,10 +115,10 @@ function App() {
             </Route>
             
             <Route path="/user">
-              <UserArea />
+              <UserArea userId={userId} />
             </Route>
 
-            <Route path="/car/update/:id">
+            <Route path="/update/:id">
               <AdvertUpdate /> 
             </Route>
 
@@ -128,7 +130,7 @@ function App() {
               <UpdatePropertyAdvert />
             </Route> */}
 
-            <Route path="/car/add/:id">
+            <Route path="/add/:id">
               <AdvertAdd /> 
             </Route>
 

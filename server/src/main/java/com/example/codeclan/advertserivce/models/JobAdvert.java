@@ -15,7 +15,8 @@ public class JobAdvert extends Advert {
     private String industry;
 
     @Column
-    private JobType jobType;
+//    private JobType jobType;
+    private String jobType;
 
     @Column
     private double salary;
@@ -26,7 +27,8 @@ public class JobAdvert extends Advert {
 
     public JobAdvert(CategoryType category, String title, String description,
                      double cost, Customer customer,
-                     String industry, JobType jobType,
+                     //String industry, JobType jobType,
+                     String industry, String jobType,
                      double salary) {
 
         super(category, title, description, cost, customer);
@@ -44,11 +46,20 @@ public class JobAdvert extends Advert {
         this.industry = industry;
     }
 
-    public JobType getJobType() {
+//    public JobType getJobType() {
+//        return jobType;
+//    }
+//
+//    public void setJobType(JobType jobType) {
+//        this.jobType = jobType;
+//    }
+
+
+    public String getJobType() {
         return jobType;
     }
 
-    public void setJobType(JobType jobType) {
+    public void setJobType(String jobType) {
         this.jobType = jobType;
     }
 

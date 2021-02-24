@@ -1,5 +1,6 @@
 package com.example.codeclan.advertserivce.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -116,6 +117,7 @@ public class Customer {
     public List<PropertyAdvert> getPropertyAdverts() {
         return propertyAdverts;
     }
+
 
     public void setPropertyAdverts(List<PropertyAdvert> propertyAdverts) {
         this.propertyAdverts = propertyAdverts;

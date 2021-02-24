@@ -82,7 +82,8 @@ class AdvertserivceApplicationTests {
 
 		JobAdvert jobAdvert = new JobAdvert(CategoryType.JOB, "Server Required For Client Services",
 				"Evening and weekend working required", 10.00, cust,
-				"Hospitality", JobType.CONTRACT, 11.75);
+				//"Hospitality", JobType.CONTRACT, 11.75);
+				"Hospitality", "CONTRACT", 11.75);
 
 		jobAdvertRepository.save(jobAdvert);
 	}

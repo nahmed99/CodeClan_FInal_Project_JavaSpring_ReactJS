@@ -4,7 +4,7 @@ import {getCustomer} from '../services/CustomerService';
 import { fulfilCarAction, fulfilJobAction , fulfilPropertyAction } from '../helpers/Actions';
 import CustomerAds from './CustomerAds';
 
-const UserArea = () => {
+const UserArea = (userId) => {
 
     // console.log("Path: Inside UserArea.js");
 
@@ -13,7 +13,9 @@ const UserArea = () => {
 
     useEffect(() => {
 
-        getCustomer(2)
+        console.log(userId.userId);
+
+        getCustomer(userId.userId)
         .then((customerData) => {
             setCustomer(customerData);
         })
@@ -42,7 +44,7 @@ const UserArea = () => {
     return (
         <div className="user-area">
             {customer && <Link to={{  
-                pathname: `/car/add/${customer.id}`, 
+                pathname: `/add/${customer.id}`, 
                 state: customer,
             }}> <button>New Advert</button> </Link>}
             <br></br>

@@ -70,17 +70,20 @@ public class DataLoader implements ApplicationRunner {
 
         JobAdvert jobAdvert = new JobAdvert(CategoryType.JOB, "Server Required For Client Services",
                 "Evening and weekend working required", 10.00, cust2,
-                "Hospitality", JobType.CONTRACT, 11.75);
+                //"Hospitality", JobType.CONTRACT, 11.75);
+                "Hospitality", "CONTRACT", 11.75);
         jobAdvertRepository.save(jobAdvert);
 
         JobAdvert jobAdvert2 = new JobAdvert(CategoryType.JOB, "Chef",
                 "Evening and weekend working required", 10.00, cust2,
-                "Hospitality", JobType.PERMANENT, 15.95);
+                //"Hospitality", JobType.PERMANENT, 15.95);
+                "Hospitality", "PERMANENT", 15.95);
         jobAdvertRepository.save(jobAdvert2);
 
         JobAdvert jobAdvert3 = new JobAdvert(CategoryType.JOB, "Dish washer",
                 "Evening and weekend working required", 10.00, cust2,
-                "Hospitality", JobType.PERMANENT, 10.45);
+                //"Hospitality", JobType.PERMANENT, 10.45);
+                "Hospitality", "PERMANENT", 10.45);
         jobAdvertRepository.save(jobAdvert3);
 
         PropertyAdvert propertyAdvert = new PropertyAdvert(CategoryType.PROPERTY, "Bungalow For Sale",

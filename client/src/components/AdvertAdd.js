@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import { addCarAdvert } from '../services/CarService';
+import { addJobAdvert } from '../services/JobService';
+import { addPropertyAdvert } from '../services/PropertyService';
 
 // MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
 // MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
@@ -12,9 +14,10 @@ const AdvertAdd = () => {
     // Grab CUSTOMER data passed in from UserArea.js container
     const { id } = useParams();
     const data = useLocation();
-    const customerData = data.state;
-
     const history = useHistory();
+    // const customerData = data.state;
+
+    const [customerData, setCustomerData] = useState([]);
 
 
     console.log(JSON.stringify(customerData));
@@ -24,6 +27,8 @@ const AdvertAdd = () => {
     const [category, setCategory] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+
+    // For category === "CAR"
     const [make, setMake] = useState("");
     const [model, setModel] = useState("");
     const [regYear, setRegYear] = useState("");
@@ -31,14 +36,35 @@ const AdvertAdd = () => {
     const [numSeats, setNumSeats] = useState("");
     const [numDoors, setNumDoors] = useState("");
     const [colour, setColour] = useState("");
-    const [price, setPrice] = useState("");
-    const [carAdvert, setCarAdvert] = useState([]);
+    
+
+    // For category === "JOB"
+    const [industry, setIndustry] = useState("");
+    const [jobType, setJobType] = useState("");
+    const [salary, setSalary] = useState(0);
+
+    // For category === "PROPERTY"
+    const [type, setType] = useState("");
+    const [address, setAddress] = useState("");
+    const [postCode, setPostCode] = useState("");
+    const [numRooms, setNumRooms] = useState("");
+
+
+    // For both "CAR" and "PROPERTY"
+    const [price, setPrice] = useState(0);
+
 
     const [showCarForm, setShowCarForm] = useState(false);
     const [showJobForm, setShowJobForm] = useState(false);
     const [showPropertyForm, setShowPropertyForm] = useState(false);
 
     const [updateStatus, setUpdateStatus] = useState(false);
+
+
+    useEffect(() => {
+        setCustomerData(data.state);
+    }, []);  
+
 
 
     // Switch to help decide which form to show...
@@ -74,33 +100,37 @@ const AdvertAdd = () => {
 
     
     const handleSubmit = (ev) => {
+
+        // const reqdCustDetails = {
+        //     "id": 2,
+        //     "firstName": "Mike",
+        //     "secondName": "Hall",
+        //     "email": "mhallemail@thefreeplace.there"
+        //     }
+
+
+        const reqdCustDetails = {
+            "id": customerData.id,
+            "firstName": customerData.firstName,
+            "secondName": customerData.secondName,
+            "email": customerData.email
+            };
+
+
+
+
         
         ev.preventDefault(); // prevent the page from refreshing
 
         function AddCarAdvert() {
-
-            // Set the value(s) - both methods (below) work.
-            // carAdvert.category = category;
-            // carAdvert["title"] = title;
-            // carAdvert.description = description;
-            // carAdvert.cost = 0.00; // cost of advert - server will calculate this.
-            // carAdvert.customer = customerData;
-            // carAdvert.make = make;
-            // carAdvert.model = model;
-            // carAdvert.regYear = regYear;
-            // carAdvert.transmission = transmission;
-            // carAdvert.numSeats = numSeats;
-            // carAdvert.numDoors = numDoors;
-            // carAdvert.colour = colour;
-            // carAdvert.price = price;
-            // carAdvert.imageUrl = [];
 
             const newCarAdvert = {
                 category,
                 title,
                 description,
                 "cost" : 0.00,
-                "customer": customerData,
+                // "customer": customerData,
+                "customer": reqdCustDetails,
                 "make": make,
                 model,
                 regYear,
@@ -112,10 +142,8 @@ const AdvertAdd = () => {
                 "imageUrl": []
             }
 
-            console.log("******Data being sent: " + JSON.stringify(newCarAdvert));
 
-            // console.log("the title: " + title + " the id: " + carAdvert.id);
-            // console.log(" the data.state id: " + data.state.id);
+            console.log("******Data being sent: " + JSON.stringify(newCarAdvert));
 
             // Add the advert
             addCarAdvert(newCarAdvert)
@@ -128,20 +156,84 @@ const AdvertAdd = () => {
             })
         }
 
+
+        function AddJobAdvert() {
+
+            const newJobAdvert = {
+                category,
+                title,
+                description,
+                "cost" : 0.00,
+                // "customer": customerData,
+                "customer": reqdCustDetails,
+                industry,
+                jobType,
+                salary
+            }
+
+            console.log("******Data being sent: " + JSON.stringify(newJobAdvert));
+
+
+            // Add the advert
+            addJobAdvert(newJobAdvert)
+            .then((respData) => {
+                    console.log(respData);
+
+                if (respData.category === "JOB") {
+                    setUpdateStatus(true);
+                }
+            })
+        }
+
+
+        function AddPropertyAdvert() {
+
+            let newPropertyAdvert = {
+                category,
+                title,
+                description,
+                "cost" : 0.00,
+                "customer": customerData,
+                type,
+                address,
+                postCode,
+                numRooms,
+                price,
+                "imageUrl": []
+            }
+
+            console.log("******Data being sent: " + JSON.stringify(newPropertyAdvert));
+
+
+            // Add the advert
+            addPropertyAdvert(newPropertyAdvert)
+            .then((respData) => {
+                    console.log(respData);
+
+                if (respData.category === "PROPERTY") {
+                    setUpdateStatus(true);
+                }
+            })
+        }        
         
+
+        console.log("&*&*&* "  + category);
 
         switch (category) {
             case "CAR":
+                console.log("going to create CAR ");
                 AddCarAdvert();
                 break;
 
-            // case "JOB":
-            //     AddJobAdvert();
-            //     break;
+            case "JOB":
+                console.log("going to create JOB");
+                AddJobAdvert();
+                break;
 
-            // case "PROPERTY":
-            //     AddPropertyAdvert();
-            //     break;
+            case "PROPERTY":
+                console.log("going to create PROPERTY");
+                AddPropertyAdvert();
+                break;
 
         }
 
@@ -224,9 +316,60 @@ const AdvertAdd = () => {
                 <label htmlFor="price">Price: </label>
                 <input type="number" id="price" name="price" value={price} required onChange={(e) => setPrice(e.target.value)}/>
 
-                <button>Add Advert</button>
+              </div>}
+
+              {showJobForm && 
+              <div>
+                <label htmlFor="title">Title: </label>
+                <textarea type="text" id="title" name="title" value={title}
+                required onChange={(e) => setTitle(e.target.value)}/>
+
+                <label htmlFor="description">Description: </label>
+                <textarea type="text" id="description" name="description" value={description} required  onChange={(e) => setDescription(e.target.value)}/>
+
+                <label htmlFor="industry">Industry: </label>
+                <input type="text" id="industry" name="industry" value={industry} required onChange={(e) => setIndustry(e.target.value)}/>
+
+                <label htmlFor="jobtype">Job Type: </label>
+                <select required defaultValue="Select" onChange={(e) => setJobType(e.target.value)}>
+                    <option>Select</option>
+                    <option value="CONTRACT">CONTRACT</option>
+                    <option value="PERMANENT">PERMANENT</option>
+                </select>
+
+                <label htmlFor="salary">Salary: </label>
+                <input type="number" id="salary" name="salary" value={salary} required onChange={(e) => setSalary(e.target.value)}/>
 
               </div>}
+            
+              {showPropertyForm && 
+              <div>
+                <label htmlFor="title">Title: </label>
+                <textarea type="text" id="title" name="title" value={title}
+                required onChange={(e) => setTitle(e.target.value)}/>
+
+                <label htmlFor="description">Description: </label>
+                <textarea type="text" id="description" name="description" value={description} required  onChange={(e) => setDescription(e.target.value)}/>
+
+                <label htmlFor="type">Type: </label>
+                <input type="text" id="type" name="type" value={type} required onChange={(e) => setType(e.target.value)}/>
+
+                <label htmlFor="address">Address: </label>
+                <input type="text" id="address" name="address" value={address} required onChange={(e) => setAddress(e.target.value)}/>
+
+                <label htmlFor="postcode">Post Code: </label>
+                <input type="text" id="postcode" name="postcode" value={postCode} required onChange={(e) => setPostCode(e.target.value)}/>
+
+                <label htmlFor="numrooms">Number Of Rooms: </label>
+                <input type="number" id="numrooms" name="numrooms" value={numRooms} required onChange={(e) => setNumRooms(e.target.value)}/>
+
+                <label htmlFor="price">Price: </label>
+                <input type="number" id="price" name="price" value={price} required onChange={(e) => setPrice(e.target.value)}/>
+
+              </div>}
+
+              <button>Add Advert</button>
+
             </form>
             </div>
             }
