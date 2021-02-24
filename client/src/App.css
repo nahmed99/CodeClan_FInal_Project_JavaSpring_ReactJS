@@ -172,6 +172,7 @@
 }
 
 
+
 .user-area {
   max-width: 600px;
   margin: 0 auto;
@@ -181,6 +182,32 @@
   background: powderblue;
   color: black;
   border: 0;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.login-form {
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-form input {
+  width: 50%;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  background: powderblue;
+  color: black;
+  border: 0;
+  margin-left: 5px;
   padding: 7px;
   border-radius: 5px;
   cursor: pointer;

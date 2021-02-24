@@ -102,14 +102,14 @@ function App() {
 
         </header>
 
-        <section>
-          <SearchForm onSearchClicked={onSearchClicked} />
-        </section>
-
         <div className='content'>
           <Switch>
 
             <Route exact path="/">
+              <section>
+                <SearchForm onSearchClicked={onSearchClicked} />
+              </section>
+
               <section className="list-section">
                 <ScrollView className="scrollview-data">
                   <AdvertList className="advert-list" adverts={adverts} onAdvertSelected={onAdvertSelected}/>
