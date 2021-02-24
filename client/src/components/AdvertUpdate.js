@@ -82,9 +82,9 @@ const AdvertUpdate = () => {
             .then((respData) => {
                     console.log(respData.category);
 
-                    if (respData.category === "CAR") {
-                        setUpdateStatus(true);
-                    }
+                if (respData.category === "CAR") {
+                    setUpdateStatus(true);
+                }
             })
 
         }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import { addCarAdvert } from '../services/CarService';
 
 // MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
@@ -13,6 +13,9 @@ const AdvertAdd = () => {
     const { id } = useParams();
     const data = useLocation();
     const customerData = data.state;
+
+    const history = useHistory();
+
 
     console.log(JSON.stringify(customerData));
 
@@ -34,6 +37,8 @@ const AdvertAdd = () => {
     const [showCarForm, setShowCarForm] = useState(false);
     const [showJobForm, setShowJobForm] = useState(false);
     const [showPropertyForm, setShowPropertyForm] = useState(false);
+
+    const [updateStatus, setUpdateStatus] = useState(false);
 
 
     // Switch to help decide which form to show...
@@ -116,6 +121,10 @@ const AdvertAdd = () => {
             addCarAdvert(newCarAdvert)
             .then((respData) => {
                     console.log(respData);
+
+                if (respData.category === "CAR") {
+                    setUpdateStatus(true);
+                }
             })
         }
 
@@ -136,20 +145,17 @@ const AdvertAdd = () => {
 
         }
 
+    }
 
 
-        // This is how you could probably set up the new Advert:
-        // *****************************************************
+    const handleClick = (ev) => {
+        
+        ev.preventDefault(); // prevent the page from refreshing
 
-        // const id = data.state["id"];
-        // const category = data.state["category"];
-        // const cost = data.state["cost"];
-        //  customer id and imageUrl array
-        //  ¦
-        //  ¦
-        // const updatedAdvert = {id, category, title, description, cost, make, model, regYear, numSeats, numDoors, colour, price};
-        //
-
+        
+        if (setUpdateStatus) {
+            history.push("/user");
+        }
 
     }
 
@@ -157,6 +163,9 @@ const AdvertAdd = () => {
     return (
 
         <>
+
+          {!updateStatus &&
+          <div>
             <h2 className="ad-form">Place New Advert</h2>
             <br></br>
 
@@ -219,6 +228,16 @@ const AdvertAdd = () => {
 
               </div>}
             </form>
+            </div>
+            }
+
+            {updateStatus && 
+                <div className="ad-form">
+                <h3>Your advert has been created.</h3>
+                <br></br>
+                <button onClick={handleClick}>Click To Continue</button> 
+        </div>
+    }
         </>
     );
 }
