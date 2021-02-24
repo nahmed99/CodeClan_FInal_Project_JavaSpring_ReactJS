@@ -44,7 +44,10 @@ const UserArea = () => {
             {customer && <Link to={{  
                 pathname: `/car/add/${customer.id}`, 
                 state: customer,
-            }}> <button>New</button> </Link>}
+            }}> <button>New Advert</button> </Link>}
+            <br></br>
+            <br></br>
+            <br></br>
             {customer && <h4>{customer.firstName} {customer.secondName}, you have placed the following adds:</h4>}
             <br></br>
             {customer && <CustomerAds customer={customer} onActionSelected={onActionSelected}/>}

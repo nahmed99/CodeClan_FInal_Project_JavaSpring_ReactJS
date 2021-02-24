@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import { getCarAdvert, updateCarAdvert } from '../services/CarService';
 
 
@@ -16,6 +16,8 @@ const AdvertUpdate = () => {
     // Grab ADVERT data passed in from CustomerAds container
     const { id } = useParams();
     const advertData = useLocation();
+
+    const history = useHistory();
 
     console.log(JSON.stringify(advertData.state));
     
@@ -34,6 +36,8 @@ const AdvertUpdate = () => {
     const [colour, setColour] = useState(advertData.state["colour"]);
     const [price, setPrice] = useState(advertData.state["price"]);
     const [carAdvert, setCarAdvert] = useState([]);
+
+    const [updateStatus, setUpdateStatus] = useState(false);
 
 
     // Get the advert that we are to update (the data that 
@@ -76,26 +80,28 @@ const AdvertUpdate = () => {
             // Update the advert
             updateCarAdvert(carAdvert)
             .then((respData) => {
-                    console.log(respData);
+                    console.log(respData.category);
+
+                    if (respData.category === "CAR") {
+                        setUpdateStatus(true);
+                    }
             })
+
         }
 
         updateAdvert();
 
+    }
 
 
-        // This is how you could probably set up the new Advert:
-        // *****************************************************
+    const handleClick = (ev) => {
+        
+        ev.preventDefault(); // prevent the page from refreshing
 
-        // const id = data.state["id"];
-        // const category = data.state["category"];
-        // const cost = data.state["cost"];
-        //  customer id and imageUrl array
-        //  ¦
-        //  ¦
-        // const updatedAdvert = {id, category, title, description, cost, make, model, regYear, numSeats, numDoors, colour, price};
-        //
-
+        
+        if (setUpdateStatus) {
+            history.push("/user");
+        }
 
     }
 
@@ -104,9 +110,11 @@ const AdvertUpdate = () => {
 
         <>
 
+        {!updateStatus &&
+        <div>
         <h2 className="ad-form">Update Advert</h2>
         <br></br>
-
+        
         <form className="ad-form" onSubmit={handleSubmit}>
 
         <label htmlFor="title">Title: </label>
@@ -155,6 +163,17 @@ const AdvertUpdate = () => {
         <button>Update</button>
 
     </form>
+    </div>
+    }
+
+    {updateStatus && 
+        <div className="ad-form">
+            <h3>Your advert has been updated.</h3>
+            <br></br>
+            <button onClick={handleClick}>Click To Continue</button> 
+        </div>
+    }
+
     </>
     );
 }
