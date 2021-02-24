@@ -146,13 +146,36 @@
   cursor: pointer;
 }
 
+.search-form {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.search-form input {
+  width: 50%;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.search-form button {
+  background: powderblue;
+  color: black;
+  border: 0;
+  margin-left: 5px;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 
 .user-area {
   max-width: 600px;
   margin: 0 auto;
 }
-
 
 .user-area button {
   background: powderblue;

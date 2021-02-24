@@ -10,6 +10,7 @@ import LoginForm from './containers/LoginForm';
 import UserArea from './containers/UserArea';
 import AdvertUpdate from './components/AdvertUpdate';
 import AdvertAdd from './components/AdvertAdd';
+import SearchForm from './containers/SearchForm';
 
 
 function App() {
@@ -23,14 +24,16 @@ function App() {
   // const [selectedCategory, setSelectedCategory] = useState("");
   // const [selectedId, setSelectedId] = useState(0);
   const [oneAdvert, setOneAdvert] = useState([]);
+  const [searchRequested, setSearchReuested] = useState("");
+
 
   useEffect(() => {
-    getAllAdverts(searchString, category)
+    getAllAdverts(searchRequested, category)
     .then((adverts) => {
       setAdverts(adverts);
       // console.log(adverts);
     })
-  }, []);
+  }, [searchRequested]);
 
 
 
@@ -83,16 +86,25 @@ function App() {
     setUserId(user)
   }
 
+  const onSearchClicked = (searchString) => {
+    setSearchReuested(searchString);
+    
+  }
+
 
   return (
       <Router>
         <header className="header-section"> 
-        {/* Only one naviogation bar will be shown - one when user
+        {/* Only one navigation bar will be shown - one when user
          is NOT logged in, or the other when user IS logged in */}
           
             <Navbar loggedIn={ loggedIn }/>
 
         </header>
+
+        <section>
+          <SearchForm onSearchClicked={onSearchClicked} />
+        </section>
 
         <div className='content'>
           <Switch>

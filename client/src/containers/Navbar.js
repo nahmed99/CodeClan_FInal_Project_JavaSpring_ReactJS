@@ -27,7 +27,7 @@ export default Navbar;
 
 /*
 
-The following is for REFERENCE only - the way you coudl access the 'server' for the specified URL (the anchor tags have been replaced by Link tags in the code above - these intercept the requests for new pages/erfreshes, and the href tags have been replaced by "to"):
+The following is for REFERENCE only - the way you could access the 'server' for the specified URL (the anchor tags have been replaced by Link tags in the code above - these intercept the requests for new pages/erfreshes, and the href tags have been replaced by "to"):
 
 
 const Navbar = ({loggedIn}) => {
