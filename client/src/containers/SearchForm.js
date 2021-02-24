@@ -18,9 +18,6 @@ const SearchForm = ( { onSearchClicked } ) => {
             <input type="text" id="search" name="search" value={searchString} placeholder="Please enter search" onChange={(e) => setSearchString(e.target.value)}/>
 
             <button type="button" onClick={ handleClick } >Search</button>
-
-
-            <br></br>
             
         </div>
     );
