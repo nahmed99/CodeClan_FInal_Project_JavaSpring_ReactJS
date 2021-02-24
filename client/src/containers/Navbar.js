@@ -10,6 +10,7 @@ const Navbar = ({loggedIn}) => {
                 {!loggedIn && <Link to="/login" style={{
                     color: "darkblue",
                     backgroundColor: "powderblue",
+                    border: "solid lightred 1px",
                     borderRadius: "5px"
                 }}>Login</Link>}
                 

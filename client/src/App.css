@@ -32,7 +32,7 @@
 
 .content {
   max-width: 675px;
-  margin: 35px auto;
+  margin: 10px auto;
   padding: 15px;
 }
 
@@ -155,7 +155,7 @@
 .search-form input {
   width: 50%;
   padding: 5px 10px;
-  margin: 10px 0;
+  margin: 1px 0 10px 0;
   border: 1px solid darkblue;
   border-radius: 5px;
   box-sizing: border-box;
