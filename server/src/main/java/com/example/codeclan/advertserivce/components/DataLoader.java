@@ -54,14 +54,16 @@ public class DataLoader implements ApplicationRunner {
 
         CarAdvert carAdvert = new CarAdvert(CategoryType.CAR, "Good car for sale",
                 "very good runner, low mileage", 25.00, cust1,
-                "Fird", "Iscort", 1999, TransmissionType.MANUAL,
+                //"Fird", "Iscort", 1999, TransmissionType.MANUAL,
+                "Fird", "Iscort", 1999, "MANUAL",
                 5, 5, "Black", 595.95, imgURL1);
         carAdvertRepository.save(carAdvert);
 
 
         CarAdvert carAdvert2 = new CarAdvert(CategoryType.CAR, "Car for quick sale",
                 "very good runner, ave mileage", 25.00, cust2,
-                "Jaguar", "XJS", 2013, TransmissionType.AUTOMATIC,
+                //"Jaguar", "XJS", 2013, TransmissionType.AUTOMATIC,
+                "Jaguar", "XJS", 2013, "AUTOMATIC",
                 5, 4, "Gold", 7950.45, imgURL3);
         carAdvertRepository.save(carAdvert2);
 

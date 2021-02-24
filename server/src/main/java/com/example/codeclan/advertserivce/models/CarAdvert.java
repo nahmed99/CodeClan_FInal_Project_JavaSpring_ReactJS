@@ -21,7 +21,8 @@ public class CarAdvert extends Advert {
     private int regYear;
 
     @Column
-    private TransmissionType transmission;
+    // private TransmissionType transmission;
+    private String transmission;
 
     @Column
     private int numSeats;
@@ -46,7 +47,8 @@ public class CarAdvert extends Advert {
 
     public CarAdvert(CategoryType category, String title, String description, double cost,
                      Customer customer, String make, String model,
-                     int regYear, TransmissionType transmission, int numSeats,
+                     //int regYear, TransmissionType transmission, int numSeats,
+                     int regYear, String transmission, int numSeats,
                      int numDoors, String colour, double price,
                      String[] imageUrl) {
 
@@ -88,11 +90,20 @@ public class CarAdvert extends Advert {
         this.regYear = regYear;
     }
 
-    public TransmissionType getTransmission() {
+//    public TransmissionType getTransmission() {
+//        return transmission;
+//    }
+//
+//    public void setTransmission(TransmissionType transmission) {
+//        this.transmission = transmission;
+//    }
+
+
+    public String getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(TransmissionType transmission) {
+    public void setTransmission(String transmission) {
         this.transmission = transmission;
     }
 

@@ -52,7 +52,8 @@ class AdvertserivceApplicationTests {
 
 		CarAdvert carAdvert = new CarAdvert(CategoryType.CAR, "Good car for sale",
 				"very good runner, low mileage", 25.00, cust,
-				"Fird", "Iscort", 1999, TransmissionType.MANUAL,
+				//"Fird", "Iscort", 1999, TransmissionType.MANUAL,
+				"Fird", "Iscort", 1999, "MANUAL",
 				5, 5, "Black", 500.00, imgURL);
 
 		carAdvertRepository.save(carAdvert);

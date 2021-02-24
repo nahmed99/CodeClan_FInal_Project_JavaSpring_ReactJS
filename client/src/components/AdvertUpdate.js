@@ -13,24 +13,26 @@ const AdvertUpdate = () => {
     // console.log("Path: Inside UpdateCarAdvert.js");
 
 
-    // Grab data passed in from CustomerAds container
+    // Grab ADVERT data passed in from CustomerAds container
     const { id } = useParams();
-    const data = useLocation();
+    const advertData = useLocation();
+
+    console.log(JSON.stringify(advertData.state));
     
     // const { state } = useLocation(); this workds too!
 
     
     // Set up state variables to handle any changes made to the form
-    const [title, setTitle] = useState(data.state["title"]);
-    const [description, setDescription] = useState(data.state["description"]);
-    const [make, setMake] = useState(data.state["make"]);
-    const [model, setModel] = useState(data.state["model"]);
-    const [regYear, setRegYear] = useState(data.state["regYear"]);
-    const [transmission, setTransmission] = useState(data.state["transmission"]);
-    const [numSeats, setNumSeats] = useState(data.state["numSeats"]);
-    const [numDoors, setNumDoors] = useState(data.state["numDoors"]);
-    const [colour, setColour] = useState(data.state["colour"]);
-    const [price, setPrice] = useState(data.state["price"]);
+    const [title, setTitle] = useState(advertData.state["title"]);
+    const [description, setDescription] = useState(advertData.state["description"]);
+    const [make, setMake] = useState(advertData.state["make"]);
+    const [model, setModel] = useState(advertData.state["model"]);
+    const [regYear, setRegYear] = useState(advertData.state["regYear"]);
+    const [transmission, setTransmission] = useState(advertData.state["transmission"]);
+    const [numSeats, setNumSeats] = useState(advertData.state["numSeats"]);
+    const [numDoors, setNumDoors] = useState(advertData.state["numDoors"]);
+    const [colour, setColour] = useState(advertData.state["colour"]);
+    const [price, setPrice] = useState(advertData.state["price"]);
     const [carAdvert, setCarAdvert] = useState([]);
 
 
@@ -39,7 +41,7 @@ const AdvertUpdate = () => {
     // CUSTOMER TABLE!!! So we need to retrieve the data 
     // from CarAdvert, and then update that and send back!
     useEffect(() => {
-        getCarAdvert(data.state["id"])
+        getCarAdvert(advertData.state["id"])
             .then((advert) => {
                 setCarAdvert(advert);
             // console.log(advert);

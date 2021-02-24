@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams, useLocation } from "react-router-dom";
 import { addCarAdvert } from '../services/CarService';
 
 // MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
@@ -6,6 +7,14 @@ import { addCarAdvert } from '../services/CarService';
 // MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
 
 const AdvertAdd = () => {
+
+
+    // Grab CUSTOMER data passed in from UserArea.js container
+    const { id } = useParams();
+    const data = useLocation();
+    const customerData = data.state;
+
+    console.log(JSON.stringify(customerData));
 
     
     // Set up state variables to handle any changes made to the form
@@ -63,33 +72,69 @@ const AdvertAdd = () => {
         
         ev.preventDefault(); // prevent the page from refreshing
 
-        function AddAdvert() {
+        function AddCarAdvert() {
 
-            // Set the new value(s) - both methods (below) work.
-            carAdvert["title"] = title;
-            carAdvert.description = description;
-            carAdvert.make = make;
-            carAdvert.model = model;
-            carAdvert.regYear = regYear;
-            carAdvert.transmission = transmission;
-            carAdvert.numSeats = numSeats;
-            carAdvert.numDoors = numDoors;
-            carAdvert.colour = colour;
-            carAdvert.price = price;
+            // Set the value(s) - both methods (below) work.
+            // carAdvert.category = category;
+            // carAdvert["title"] = title;
+            // carAdvert.description = description;
+            // carAdvert.cost = 0.00; // cost of advert - server will calculate this.
+            // carAdvert.customer = customerData;
+            // carAdvert.make = make;
+            // carAdvert.model = model;
+            // carAdvert.regYear = regYear;
+            // carAdvert.transmission = transmission;
+            // carAdvert.numSeats = numSeats;
+            // carAdvert.numDoors = numDoors;
+            // carAdvert.colour = colour;
+            // carAdvert.price = price;
+            // carAdvert.imageUrl = [];
 
-            // console.log("Data being sent: " + JSON.stringify(carAdvert));
+            const newCarAdvert = {
+                category,
+                title,
+                description,
+                "cost" : 0.00,
+                "customer": customerData,
+                "make": make,
+                model,
+                regYear,
+                "transmission": transmission,
+                numSeats,
+                numDoors,
+                colour,
+                price,
+                "imageUrl": []
+            }
+
+            console.log("******Data being sent: " + JSON.stringify(newCarAdvert));
 
             // console.log("the title: " + title + " the id: " + carAdvert.id);
             // console.log(" the data.state id: " + data.state.id);
 
             // Add the advert
-            addCarAdvert(carAdvert)
+            addCarAdvert(newCarAdvert)
             .then((respData) => {
                     console.log(respData);
             })
         }
 
-        AddAdvert();
+        
+
+        switch (category) {
+            case "CAR":
+                AddCarAdvert();
+                break;
+
+            // case "JOB":
+            //     AddJobAdvert();
+            //     break;
+
+            // case "PROPERTY":
+            //     AddPropertyAdvert();
+            //     break;
+
+        }
 
 
 
@@ -154,8 +199,8 @@ const AdvertAdd = () => {
                 <label htmlFor="transmission">Transmission: </label>
                 <select required defaultValue="Select" onChange={(e) => setTransmission(e.target.value)}>
                     <option>Select</option>
-                    <option value="manual">MANUAL</option>
-                    <option value="automatic">AUTOMATIC</option>
+                    <option value="MANUAL">MANUAL</option>
+                    <option value="AUTOMATIC">AUTOMATIC</option>
                 </select>
 
                 <label htmlFor="seats">Seats: </label>
