@@ -105,6 +105,10 @@ const CarAdvertAdd = () => {
     return (
 
         <>
+
+            <h2 className="ad-form">Place New Advert</h2>
+            <br></br>
+
             <form className="ad-form" onSubmit={handleSubmit}>
 
                 <label htmlFor="make">Category: </label>

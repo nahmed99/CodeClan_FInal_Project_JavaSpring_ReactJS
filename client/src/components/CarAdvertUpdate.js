@@ -95,6 +95,11 @@ const CarAdvertUpdate = () => {
 
     return (
 
+        <>
+
+        <h2 className="ad-form">Update Advert</h2>
+        <br></br>
+
         <form className="ad-form" onSubmit={handleSubmit}>
 
         <label htmlFor="title">Title: </label>
@@ -143,6 +148,7 @@ const CarAdvertUpdate = () => {
         <button>Update</button>
 
     </form>
+    </>
     );
 }
 
