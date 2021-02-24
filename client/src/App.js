@@ -19,12 +19,10 @@ function App() {
   const [userId, setUserId] = useState(0);
   const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useState("");  // Not required???
   const [category, setCategory] = useState("");
-  // const [selectedCategory, setSelectedCategory] = useState("");
-  // const [selectedId, setSelectedId] = useState(0);
   const [oneAdvert, setOneAdvert] = useState([]);
-  const [searchRequested, setSearchReuested] = useState("");
+  const [searchRequested, setSearchRequested] = useState("");
 
 
   useEffect(() => {
@@ -36,47 +34,7 @@ function App() {
   }, [searchRequested]);
 
 
-
-  // const onHandleUpdate = () => {
-  //   adverts[0].title = "Added this " + adverts[0].title;
-  //   // setCustomers(customers); This is setting up the local data
-  //   updateCustomer(adverts[0]); // This is updating the server-side data.
-  // }
-
-
-  // const onHandleDelete = () => {
-  //   deleteCustomer(adverts[0].id); // This is updating the server-side data.
-  // }
-
-
   const onAdvertSelected = (advert) => {
-    // Each time the user clicks on an advert summary, we
-    // want the full advert to be displayed to the user.
-
-    // if (category === "CAR") {
-    //   getCarAdvert(id)
-    //   .then((advert) => {
-    //     console.log(advert);
-    //     setOneAdvert(advert);
-    //   });
-    // }
-
-    // if (category === "JOB") {
-    //   getJobAdvert(id)
-    //   .then((advert) => {
-    //     console.log(advert);
-    //     setOneAdvert(advert);
-    //   });
-    // }
-
-    // if (category === "PROPERTY") {
-    //   getPropertyAdvert(id)
-    //   .then((advert) => {
-    //     console.log(advert);
-    //     setOneAdvert(advert);
-    //   });
-    // }
-
     setOneAdvert(advert);
     setTrigger(true);
   }
@@ -87,7 +45,7 @@ function App() {
   }
 
   const onSearchClicked = (searchString) => {
-    setSearchReuested(searchString);
+    setSearchRequested(searchString);
     
   }
 

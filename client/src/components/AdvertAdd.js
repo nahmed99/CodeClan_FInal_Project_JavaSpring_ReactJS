@@ -116,9 +116,6 @@ const AdvertAdd = () => {
             "email": customerData.email
             };
 
-
-
-
         
         ev.preventDefault(); // prevent the page from refreshing
 
@@ -193,7 +190,8 @@ const AdvertAdd = () => {
                 title,
                 description,
                 "cost" : 0.00,
-                "customer": customerData,
+                //"customer": customerData,
+                "customer": reqdCustDetails,
                 type,
                 address,
                 postCode,
