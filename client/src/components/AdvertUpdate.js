@@ -55,6 +55,15 @@ const AdvertUpdate = () => {
 
     const handleSubmit = (ev) => {
         
+
+        const reqdCustDetails = {
+            "id": carAdvert.customer.id,
+            "firstName": carAdvert.customer.firstName,
+            "secondName": carAdvert.customer.secondName,
+            "email": carAdvert.customer.email
+            };
+
+
         ev.preventDefault(); // prevent the page from refreshing
 
         
@@ -63,6 +72,7 @@ const AdvertUpdate = () => {
             // Set the new value(s) - both methods (below) work.
             carAdvert["title"] = title;
             carAdvert.description = description;
+            carAdvert.customer = reqdCustDetails
             carAdvert.make = make;
             carAdvert.model = model;
             carAdvert.regYear = regYear;
