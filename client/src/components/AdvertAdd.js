@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { addCarAdvert } from '../services/CarService';
 
-const CarAdvertAdd = () => {
+// MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
+// MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
+// MERGE THIS CODE WITH AdvertUpdate.js - there are too many similarities to ignore!
+
+const AdvertAdd = () => {
 
     
     // Set up state variables to handle any changes made to the form
@@ -49,6 +53,9 @@ const CarAdvertAdd = () => {
                 setShowJobForm(false);
                 setShowPropertyForm(false);
         }
+
+        console.log(category);
+
     }, [category]);   
 
     
@@ -105,7 +112,6 @@ const CarAdvertAdd = () => {
     return (
 
         <>
-
             <h2 className="ad-form">Place New Advert</h2>
             <br></br>
 
@@ -118,15 +124,15 @@ const CarAdvertAdd = () => {
                     <option value="JOB">JOB</option>
                     <option value="PROPERTY">PROPERTY</option>
                 </select>
-            </form>
 
-            {showCarForm && <form className="ad-form" onSubmit={handleSubmit}>
+            {showCarForm && 
+              <div>
                 <label htmlFor="title">Title: </label>
-                <textarea type="text" id="title" name="title" value=""
+                <textarea type="text" id="title" name="title" value={title}
                 required onChange={(e) => setTitle(e.target.value)}/>
 
                 <label htmlFor="description">Description: </label>
-                <textarea type="text" id="description" name="description" value="" required  onChange={(e) => setDescription(e.target.value)}/>
+                <textarea type="text" id="description" name="description" value={description} required  onChange={(e) => setDescription(e.target.value)}/>
 
                 <label htmlFor="make">Make: </label>
                 <select required defaultValue="Select" onChange={(e) => setMake(e.target.value)}>
@@ -140,10 +146,10 @@ const CarAdvertAdd = () => {
                 </select>
 
                 <label htmlFor="model">Model: </label>
-                <input type="text" id="model" name="model" value="" required onChange={(e) => setModel(e.target.value)}/>
+                <input type="text" id="model" name="model" value={model} required onChange={(e) => setModel(e.target.value)}/>
 
                 <label htmlFor="registration">Registration Year: </label>
-                <input type="number" min="1900" max="2029" step="1" id="registration" name="registration" value="2021" required onChange={(e) => setRegYear(e.target.value)}/>
+                <input type="number" min="1900" max="2029" step="1" id="registration" name="registration" value={regYear} required onChange={(e) => setRegYear(e.target.value)}/>
 
                 <label htmlFor="transmission">Transmission: </label>
                 <select required defaultValue="Select" onChange={(e) => setTransmission(e.target.value)}>
@@ -153,22 +159,23 @@ const CarAdvertAdd = () => {
                 </select>
 
                 <label htmlFor="seats">Seats: </label>
-                <input type="number" id="seats" name="seats" value="" required onChange={(e) => setNumSeats(e.target.value)}/>
+                <input type="number" id="seats" name="seats" value={numSeats} required onChange={(e) => setNumSeats(e.target.value)}/>
 
                 <label htmlFor="doors">Doors: </label>
-                <input type="number" id="doors" name="doors" value="" required onChange={(e) => setNumDoors(e.target.value)}/>
+                <input type="number" id="doors" name="doors" value={numDoors} required onChange={(e) => setNumDoors(e.target.value)}/>
 
                 <label htmlFor="colour">Colour: </label>
-                <input type="text" id="colour" name="colour" value="" required onChange={(e) => setColour(e.target.value)}/>
+                <input type="text" id="colour" name="colour" value={colour} required onChange={(e) => setColour(e.target.value)}/>
 
                 <label htmlFor="price">Price: </label>
-                <input type="number" id="price" name="price" value="" required onChange={(e) => setPrice(e.target.value)}/>
+                <input type="number" id="price" name="price" value={price} required onChange={(e) => setPrice(e.target.value)}/>
 
                 <button>Add Advert</button>
 
-            </form> }
+              </div>}
+            </form>
         </>
     );
 }
 
-export default CarAdvertAdd;
+export default AdvertAdd;

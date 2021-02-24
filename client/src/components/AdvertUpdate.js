@@ -3,7 +3,12 @@ import { useParams, useLocation } from "react-router-dom";
 import { getCarAdvert, updateCarAdvert } from '../services/CarService';
 
 
-const CarAdvertUpdate = () => {
+// MERGE THIS CODE WITH AdvertAdd.js - there are too many similarities to ignore!
+// MERGE THIS CODE WITH AdvertAdd.js - there are too many similarities to ignore!
+// MERGE THIS CODE WITH AdvertAdd.js - there are too many similarities to ignore!
+
+
+const AdvertUpdate = () => {
 
     // console.log("Path: Inside UpdateCarAdvert.js");
 
@@ -152,4 +157,4 @@ const CarAdvertUpdate = () => {
     );
 }
 
-export default CarAdvertUpdate;
+export default AdvertUpdate;
