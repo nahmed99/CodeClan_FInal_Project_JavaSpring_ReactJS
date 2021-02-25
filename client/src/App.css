@@ -82,7 +82,7 @@
   border: 1px solid blue;
   padding: 35px;
   max-width: 650px;
-  background-color: rgb(186, 191, 247);
+  background-color: rgb(237, 246, 250);
 }
 
 .popup-inner .close-btn {
@@ -219,6 +219,7 @@
   background: white;
   font-size: 30px;
   margin: 15px 15px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
