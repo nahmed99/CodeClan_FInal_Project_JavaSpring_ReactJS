@@ -1,3 +1,24 @@
+# Instructions
+
+## Client
+
+To install:
+
+- npm install
+
+
+To Start the client:
+
+- npm start
+
+
+## Server
+
+To start the server
+
+- Run AdvertServiceApplication
+
+
 
 # Final CodeClan Project Brief
 
