@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Card = ({ number }) => <div className="card"> <img src={number} alt="Random image"></img> </div>;
+const Card = ({ anImage, anImageAlt }) => <div className="card"> <img src={anImage} alt={anImageAlt}></img> </div>;
 
 export default Card;
