@@ -48,11 +48,11 @@ const PropertyAdvert = ( {advert} ) => {
             </table>
 
             <Carousel breakPoints={ breakPoints }>
-            <Card number="1"/>
-            <Card number="2"/>
-            <Card number="3"/>
-            <Card number="4"/>
-            <Card number="5"/>
+            <Card number="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"/>
+            <Card number="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.elevenwarriors.com%2Fohio-state-football%2F2015%2F09%2F58775%2Fhate-week-hawaii&psig=AOvVaw1v6wVjQO5iS-gjhCJrEOvd&ust=1614678534752000&source=images&cd=vfe&ved=2ahUKEwid0Ji16I7vAhUDR8AKHcMaBiUQjRx6BAgAEAc"/>
+            <Card number="https://cache.desktopnexus.com/thumbseg/1560/1560621-bigthumbnail.jpg"/>
+            <Card number="https://3cjpn44a10815cq8wfbykrdc-wpengine.netdna-ssl.com/wp-content/uploads/2016/02/sunsethawaii.jpg"/>
+            <Card number="https://cache.desktopnexus.com/thumbseg/1560/1560621-bigthumbnail.jpg"/>
             </Carousel>
         </>
     )
