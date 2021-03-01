@@ -48,9 +48,20 @@ public class DataLoader implements ApplicationRunner {
         customerRepository.save(cust3);
 
 
-        String[] imgURL1 = {"http://www.bbc.com", "http://www.excite.com", "http://www.yahoo.com"};
-        String[] imgURL2 = {"http://www.google.com"};
-        String[] imgURL3 = {"http://www.open.ac.uk", "http://www.highgear.com"};
+        String[] imgURL1 = {"https://www.autotrader.co.uk/valuations/images/static/ford-s-max@2x.png",
+                "https://angliacarauctions.co.uk//media/227915/img_1750.jpg",
+                "https://d2snyq93qb0udd.cloudfront.net/prod/6556_1.jpg"
+        };
+
+        String[] imgURL2 = {"https://www.asiapropertyhq.com/wp-content/uploads/2019/08/yangon.jpg",
+                "http://www.business-in-asia.com/news/images/land.jpg",
+                "https://cache.desktopnexus.com/thumbseg/1560/1560621-bigthumbnail.jpg"
+        };
+
+        String[] imgURL3 = {"https://angliacarauctions.co.uk//media/227915/img_1750.jpg",
+                "https://car-images.bauersecure.com/pagefiles/79892/best_electric_cars_2021.jpg",
+                "https://d2snyq93qb0udd.cloudfront.net/prod/6556_1.jpg"
+        };
 
         CarAdvert carAdvert = new CarAdvert(CategoryType.CAR, "Good car for sale",
                 "very good runner, low mileage", 25.00, cust1,

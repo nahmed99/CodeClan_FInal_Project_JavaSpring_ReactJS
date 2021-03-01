@@ -11,6 +11,14 @@ const CarAdvert = ( {advert} ) => {
         {width: 1200, itemsToShow: 4}
     ]
 
+    // Create image Cards for all items in imageUrl of advert
+    const adImageUrls = advert.imageUrl.map((theImage) => {
+        // console.log(theImage);
+        return <Card key={theImage} anImage={theImage} anImageAlt="Car Image" />
+    });
+    // console.log(adImageUrls);
+
+
     return (
         <>
             <table>
@@ -48,11 +56,7 @@ const CarAdvert = ( {advert} ) => {
             </table>
 
             <Carousel breakPoints={ breakPoints }>
-            <Card anImage="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" anImageAlt="Car Image"/>
-            <Card anImage="https://cache.desktopnexus.com/thumbseg/1560/1560621-bigthumbnail.jpg" anImageAlt="Car Image"/>
-            <Card anImage="https://cache.desktopnexus.com/thumbseg/1560/1560621-bigthumbnail.jpg" anImageAlt="Car Image"/>
-            <Card anImage="https://3cjpn44a10815cq8wfbykrdc-wpengine.netdna-ssl.com/wp-content/uploads/2016/02/sunsethawaii.jpg" anImageAlt="Car Image"/>
-            <Card anImage="https://cache.desktopnexus.com/thumbseg/1560/1560621-bigthumbnail.jpg" anImageAlt="Car Image"/>
+                {adImageUrls}
             </Carousel>
         </>
     )
