@@ -142,7 +142,7 @@ const AdvertAdd = () => {
                 numDoors,
                 colour,
                 price,
-                "imageUrl": []
+                "imageUrl": [{image}]
             }
 
 
@@ -203,7 +203,7 @@ const AdvertAdd = () => {
                 postCode,
                 numRooms,
                 price,
-                "imageUrl": []
+                "imageUrl": [image]
             }
 
             console.log("******Data being sent: " + JSON.stringify(newPropertyAdvert));
@@ -347,16 +347,6 @@ const AdvertAdd = () => {
                 <label htmlFor="price">Price: </label>
                 <input type="number" id="price" name="price" value={price} required onChange={(e) => setPrice(e.target.value)}/>
 
-
-                <label htmlFor="imageUrl">Image Upload: </label>
-                <input type="file" id="imageUrl" name="file" placeholder="Upload an image" onChange={uploadImage}/>
-                {loading ? (
-                    <h3>loading...</h3>
-                ) : (
-                    <img src={image} style={{width: '350px'}} />
-                ) }
-
-
               </div>}
 
 
@@ -409,6 +399,19 @@ const AdvertAdd = () => {
                 <input type="number" id="price" name="price" value={price} required onChange={(e) => setPrice(e.target.value)}/>
 
               </div>}
+
+              {(showCarForm || showPropertyForm) && 
+                <div>
+
+                    <label htmlFor="imageUrl">Image Upload: </label>
+                    <input type="file" id="imageUrl" name="file" placeholder="Upload an image" onChange={uploadImage}/>
+                    {loading ? (
+                        <h3>loading...</h3>
+                    ) : (
+                        <img src={image} style={{width: '350px'}} />
+                    ) }
+                </div>
+              }
 
               <button>Add Advert</button>
 
