@@ -142,7 +142,7 @@ const AdvertAdd = () => {
                 numDoors,
                 colour,
                 price,
-                "imageUrl": [{image}]
+                "imageUrl": [image]
             }
 
 
