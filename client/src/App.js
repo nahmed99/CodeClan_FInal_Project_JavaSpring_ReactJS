@@ -36,7 +36,7 @@ function App() {
       setAdverts(adverts);
       // console.log(adverts);
     })
-  }, [searchRequested]);
+  }, [searchRequested]);  // request re-send of data from server on (search) submit being pressed
 
 
   const onAdvertSelected = (advert) => {
@@ -49,10 +49,27 @@ function App() {
     setUserId(user)
   }
 
+  // This function will search the adverts that are on
+  // the server side. I.e., it will request a data re-send
+  // from the server.
   const onSearchClicked = (searchString) => {
     setSearchRequested(searchString);
-    
   }
+
+
+  // This function will search the adverts that are already 
+  // on the client side.
+  // const onSearchChanged = (searchString) => {
+
+  //   const searchedAdverts = adverts.filter((advert) => {
+  //     if (advert.title.includes(searchString)) {
+  //       return advert;
+  //     }
+  //   });
+
+  //   setAdverts(searchedAdverts); // setAdverts already exists
+  //   console.log("in App.js: " + adverts);
+  // }
 
 
   return (
@@ -70,7 +87,8 @@ function App() {
 
             <Route exact path="/">
               <section>
-                <SearchForm onSearchClicked={onSearchClicked} />
+                {/* <SearchForm onSearchClicked={onSearchClicked} onSearchChanged={onSearchChanged} /> */}
+                <SearchForm onSearchClicked={onSearchClicked}/>
               </section>
 
               <section className="list-section">
