@@ -20,6 +20,7 @@ function App() {
   const [userId, setUserId] = useState(0);
   const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);
+  const [localSearchAdverts, setLocalSearchAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");  // Not required???
   const [category, setCategory] = useState("");
   const [oneAdvert, setOneAdvert] = useState([]);
@@ -28,6 +29,8 @@ function App() {
   // Image uploads
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
+
+  let searchEntered = false;
 
 
   useEffect(() => {
@@ -59,17 +62,23 @@ function App() {
 
   // This function will search the adverts that are already 
   // on the client side.
-  // const onSearchChanged = (searchString) => {
+  const onSearchChanged = (searchString) => {
 
-  //   const searchedAdverts = adverts.filter((advert) => {
-  //     if (advert.title.includes(searchString)) {
-  //       return advert;
-  //     }
-  //   });
+    if (searchString.length) {
+      searchEntered = true;
+    } else {
+      searchEntered = false;
+    }
 
-  //   setAdverts(searchedAdverts); // setAdverts already exists
-  //   console.log("in App.js: " + adverts);
-  // }
+    const searchAdverts = adverts.filter((advert) => {
+      if (advert.title.toLowerCase().includes(searchString.toLowerCase())) {
+        return advert;
+      }
+    });
+
+    setLocalSearchAdverts(searchAdverts);
+    console.log("in App.js: " + localSearchAdverts);
+  }
 
 
   return (
@@ -87,13 +96,15 @@ function App() {
 
             <Route exact path="/">
               <section>
-                {/* <SearchForm onSearchClicked={onSearchClicked} onSearchChanged={onSearchChanged} /> */}
-                <SearchForm onSearchClicked={onSearchClicked}/>
+                <SearchForm onSearchClicked={onSearchClicked} onSearchChanged={onSearchChanged} />
+                {/* <SearchForm onSearchClicked={onSearchClicked}/> */}
               </section>
 
               <section className="list-section">
                 <ScrollView className="scrollview-data">
-                  <AdvertList className="advert-list" adverts={adverts} onAdvertSelected={onAdvertSelected}/>
+
+                  <AdvertList className="advert-list" adverts={localSearchAdverts || adverts} onAdvertSelected={onAdvertSelected}/>
+
                 </ScrollView>
               </section>
 
