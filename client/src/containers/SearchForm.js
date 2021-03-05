@@ -13,7 +13,7 @@ const SearchForm = ( { onSearchClicked, onSearchChanged } ) => {
     const handleOnChange = (searchValue) => {
         // onSearchChanged(searchString); - This doesn't work - 'delayed' by one char, due to the way React and JS works...
         onSearchChanged(searchValue);
-        console.log("in SearchForm: " + searchValue);
+        // console.log("in SearchForm: " + searchValue);
     }
 
 

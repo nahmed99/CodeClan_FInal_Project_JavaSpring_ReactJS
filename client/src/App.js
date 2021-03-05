@@ -20,7 +20,7 @@ function App() {
   const [userId, setUserId] = useState(0);
   const [trigger, setTrigger] = useState(false);
   const [adverts, setAdverts] = useState([]);
-  const [localSearchAdverts, setLocalSearchAdverts] = useState([]);
+  const [displayedAdverts, setDisplayedAdverts] = useState([]);
   const [searchString, setSearchString] = useState("");  // Not required???
   const [category, setCategory] = useState("");
   const [oneAdvert, setOneAdvert] = useState([]);
@@ -30,13 +30,12 @@ function App() {
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  let searchEntered = false;
-
-
+  
   useEffect(() => {
     getAllAdverts(searchRequested, category)
     .then((adverts) => {
-      setAdverts(adverts);
+      setAdverts(adverts); // Main advert list
+      setDisplayedAdverts(adverts); // adverts to be displayed
       // console.log(adverts);
     })
   }, [searchRequested]);  // request re-send of data from server on (search) submit being pressed
@@ -64,20 +63,14 @@ function App() {
   // on the client side.
   const onSearchChanged = (searchString) => {
 
-    if (searchString.length) {
-      searchEntered = true;
-    } else {
-      searchEntered = false;
-    }
-
-    const searchAdverts = adverts.filter((advert) => {
+    const searchedAdverts = adverts.filter((advert) => {
       if (advert.title.toLowerCase().includes(searchString.toLowerCase())) {
         return advert;
       }
     });
 
-    setLocalSearchAdverts(searchAdverts);
-    console.log("in App.js: " + localSearchAdverts);
+    setDisplayedAdverts(searchedAdverts);
+    // console.log("in App.js: " + displayedAdverts);
   }
 
 
@@ -103,7 +96,11 @@ function App() {
               <section className="list-section">
                 <ScrollView className="scrollview-data">
 
-                  <AdvertList className="advert-list" adverts={localSearchAdverts || adverts} onAdvertSelected={onAdvertSelected}/>
+                  {/* <AdvertList className="advert-list" adverts={localSearchAdverts || adverts} onAdvertSelected={onAdvertSelected}/> */}
+
+                  <AdvertList className="advert-list" 
+                              adverts={displayedAdverts} 
+                              onAdvertSelected={onAdvertSelected}/>
 
                 </ScrollView>
               </section>
