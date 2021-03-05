@@ -107,14 +107,6 @@ const AdvertAdd = () => {
     
     const handleSubmit = (ev) => {
 
-        // const reqdCustDetails = {
-        //     "id": 2,
-        //     "firstName": "Mike",
-        //     "secondName": "Hall",
-        //     "email": "mhallemail@thefreeplace.there"
-        //     }
-
-
         const reqdCustDetails = {
             "id": customerData.id,
             "firstName": customerData.firstName,
@@ -132,7 +124,6 @@ const AdvertAdd = () => {
                 title,
                 description,
                 "cost" : 0.00,
-                // "customer": customerData,
                 "customer": reqdCustDetails,
                 "make": make,
                 model,
@@ -144,9 +135,6 @@ const AdvertAdd = () => {
                 price,
                 "imageUrl": [image]
             }
-
-
-            console.log("******Data being sent: " + JSON.stringify(newCarAdvert));
 
             // Add the advert
             addCarAdvert(newCarAdvert)
@@ -167,15 +155,11 @@ const AdvertAdd = () => {
                 title,
                 description,
                 "cost" : 0.00,
-                // "customer": customerData,
                 "customer": reqdCustDetails,
                 industry,
                 jobType,
                 salary
             }
-
-            console.log("******Data being sent: " + JSON.stringify(newJobAdvert));
-
 
             // Add the advert
             addJobAdvert(newJobAdvert)
@@ -196,7 +180,6 @@ const AdvertAdd = () => {
                 title,
                 description,
                 "cost" : 0.00,
-                //"customer": customerData,
                 "customer": reqdCustDetails,
                 type,
                 address,
@@ -206,8 +189,7 @@ const AdvertAdd = () => {
                 "imageUrl": [image]
             }
 
-            console.log("******Data being sent: " + JSON.stringify(newPropertyAdvert));
-
+            // console.log("******Data being sent: " + JSON.stringify(newPropertyAdvert));
 
             // Add the advert
             addPropertyAdvert(newPropertyAdvert)
@@ -225,17 +207,17 @@ const AdvertAdd = () => {
 
         switch (category) {
             case "CAR":
-                console.log("going to create CAR ");
+                // console.log("going to create CAR ");
                 AddCarAdvert();
                 break;
 
             case "JOB":
-                console.log("going to create JOB");
+                // console.log("going to create JOB");
                 AddJobAdvert();
                 break;
 
             case "PROPERTY":
-                console.log("going to create PROPERTY");
+                // console.log("going to create PROPERTY");
                 AddPropertyAdvert();
                 break;
 
@@ -244,10 +226,7 @@ const AdvertAdd = () => {
     }
 
 
-
-    // Currently got image uploading, but not doing anything with 
-    // it - i.e., not storing its (cloudinary url) or anything. One
-    // to complete in the future!
+    // Upload image and store on cloudinary.com
     const uploadImage = async e => {
         const files = e.target.files;
         const data  = new FormData();
@@ -268,7 +247,6 @@ const AdvertAdd = () => {
     }
 
 
-
     const handleClick = (ev) => {
         
         ev.preventDefault(); // prevent the page from refreshing
@@ -279,9 +257,6 @@ const AdvertAdd = () => {
 
     }
 
-
-    // For images:
-    // 	https://api.cloudinary.com/v1_1/nahmed99
 
     return (
 
