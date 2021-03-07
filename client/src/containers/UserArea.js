@@ -13,7 +13,7 @@ const UserArea = (userId) => {
 
     useEffect(() => {
 
-        console.log(userId.userId);
+        // console.log(userId.userId);
 
         getCustomer(userId.userId)
         .then((customerData) => {
